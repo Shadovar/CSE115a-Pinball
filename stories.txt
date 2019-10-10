@@ -1,0 +1,31 @@
+Must:
+	-Physics
+	-Graphics
+	-Controls
+		-Ball launcher
+		-Flippers
+		-Way to quit
+		-Tilt
+	-Points/ways of acquiring points
+
+Should:
+	-Pause (menu)
+	-Sound
+	-GOOD physics
+	-Start menu
+	-Level Design
+	-Gameplay variety
+	-Bonus point systems (end of ball, extra balls, etc.)
+	-Persistent high score tracking
+
+Could:
+	-Improved visual design
+	-Multiple tables
+	-Music
+	-Theming
+	-Multiball
+	-Non-pinball mechanics
+	-Minigames
+
+Won't:
+	-Background drawing
