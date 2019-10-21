@@ -1,0 +1,47 @@
+Retro Digital Pinball
+Austin Cheng, Carl Erez, Jordan Leggett, Jacob Rowen, Zihan Yang
+10-21-19
+
+Sprint 1 Report
+Actions to Stop Doing:
+	Tardiness: While it has not been much of an issue up to this point, ideally
+        the few instances of tardiness that have occurred will ideally be the
+        last ones, barring extenuating circumstances.
+	Otherwise, the team is satisfied with current behavior due to no major issues
+        arising during the 3 meetings and minimal work that occurred over the
+        course of this sprint.
+
+Actions to Start Doing:
+	Whiteboard: The group plans on making use of a whiteboard in one of the CSE
+        115a allocated rooms (which one TBD) in order to keep track of current
+        Sprint progress in a more tactile and visually informative manner.
+	Version Control: Carl (likely to be changed to Scrum Master) will be responsible
+        for controlling the Git Repository and the master copy of the game. Updates
+        with individuals’ code will be made at weekly meetings. This is an attempt
+        to deal with the rampant metadata produced by Unity.
+
+Actions to Keep Doing:
+	Meetings: Hold three weekly meetings, Mondays from 11am-12pm in BSoE 340,
+    Wednesdays from 4pm-5pm in BSoE 302, and Thursdays from 4:15pm-5:15pm in BSoE 302.
+
+Work Completed:
+	Spike: C# vs C++ - C# and Unity chosen.
+	Gravity – Completed
+	Momentum – Completed
+	Friction – Completed
+	Collision – Completed
+	Graphics – Completed
+	Not Completed: N/A
+
+
+Work Completion Rate:
+	Due to the Sprint being completed over the course of a week, and the decision to
+        use C# and Unity allowing for premade physics and graphics, the rates are not
+        representative.
+        
+	Days During Sprint: 5
+	User Stories Completed: 5/5
+	Story Points Completed: 15/15
+	Ideal Working Hours: 7
+	Actual Working Hours: 5
+	Ideal Working Hours/ day: 1.4
