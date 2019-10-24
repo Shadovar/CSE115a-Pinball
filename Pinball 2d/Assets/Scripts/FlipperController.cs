@@ -36,7 +36,7 @@ public class FlipperController : MonoBehaviour
             if(transform.eulerAngles.z >= 145)
             {
                 //Rotate
-                transform.Rotate(new Vector3(0, 0, -35));
+                transform.Rotate(new Vector3(0, 0, -18));
             }
         }
         else
@@ -45,7 +45,7 @@ public class FlipperController : MonoBehaviour
             if(transform.eulerAngles.z <= 210)
             {
                 //Rotate
-                transform.Rotate(new Vector3(0, 0, 10));
+                transform.Rotate(new Vector3(0, 0, 8));
             }
 
         }
