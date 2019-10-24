@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\BallTesting.cs" />
     <Compile Include="Assets\Scripts\FlipperController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\torqueFlipper.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/User/Desktop/CSE115a-Pinball/Pinball 2d/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

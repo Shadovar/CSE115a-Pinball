@@ -14,7 +14,7 @@ public class BallTesting : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
