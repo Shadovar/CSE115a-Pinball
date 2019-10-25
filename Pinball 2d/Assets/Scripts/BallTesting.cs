@@ -24,6 +24,16 @@ public class BallTesting : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        transform.position = startPos;
+        //Debug.Log(collision.transform.name);
+        if (collision.transform.name == "Flipper")
+        {
+            ScoreControl.scorevalue += 10;
+        }
+        if (collision.transform.name == "YouLose")
+        {
+            ScoreControl.scorevalue = 0;
+            transform.position = startPos;
+        }
+
     }
 }
