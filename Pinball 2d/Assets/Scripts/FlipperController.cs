@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class FlipperController : MonoBehaviour
 {
+    float rightMaxRot = 145; //default value: 145
+    float rightRestingRot = 210; //default value: 210
+    float upSpeed = 18; //default 18
+    float downSpeed = -8; //default -8
+
+    //Sets inputs for the right flipper
+    bool rightFlipperInput()
+    {
+        return (Input.GetKey(KeyCode.RightShift)/* || Input.GetKey(KeyCode.Period)*/);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,41 +24,22 @@ public class FlipperController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        /*if(transform.rotation.z > 0)
-        {
-            transform.Rotate(new Vector3(0, 0, -5));
-        }
-        else if(transform.rotation.z < 0)
-        {
-            transform.Rotate(new Vector3(0, 0, 5));
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow) && transform.rotation.z < 100)
-        {
-            transform.Rotate(new Vector3(0, 0, 10));
-        }*/
-
-        //Right Flipper Functionality
-
-        //if right shift is held/pressed
-        if (Input.GetKey(KeyCode.RightShift))
+        if (rightFlipperInput())
         {
             //if it hasn't reached its maximum
-            if(transform.eulerAngles.z >= 145)
+            //uses subtraction for upward rotation because rotating clockwise
+            if (transform.eulerAngles.z >= rightMaxRot)
             {
-                //Rotate
-                transform.Rotate(new Vector3(0, 0, -18));
+                transform.Rotate(new Vector3(0, 0, -upSpeed));
             }
         }
         else
         {
             //if it hasn't reached its base
-            if(transform.eulerAngles.z <= 210)
+            if (transform.eulerAngles.z <= rightRestingRot)
             {
-                //Rotate
-                transform.Rotate(new Vector3(0, 0, 8));
+                transform.Rotate(new Vector3(0, 0, -downSpeed));
             }
-
         }
     }
 }
