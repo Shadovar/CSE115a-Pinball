@@ -12,7 +12,7 @@ public class rightFlipper : MonoBehaviour
     //Sets inputs for the right flipper
     bool rightFlipperInput()
     {
-        return (Input.GetKey(KeyCode.M)/* || Input.GetKey(KeyCode.Period)*/);
+        return (Input.GetKey(KeyCode.Period)/* || Input.GetKey(KeyCode.Period)*/);
     }
 
     // Start is called before the first frame update

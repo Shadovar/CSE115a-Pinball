@@ -39,12 +39,12 @@ public class leftFlipper : MonoBehaviour
             if (transform.eulerAngles.z <= (leftRestingRot + downSpeed - 1)
                  || transform.eulerAngles.z >= leftRestingRot)
             {
-                Debug.Log(transform.eulerAngles.z + " < " + (leftRestingRot + downSpeed - 1) + " || > " + leftRestingRot);
+                //Debug.Log(transform.eulerAngles.z + " < " + (leftRestingRot + downSpeed - 1) + " || > " + leftRestingRot);
                 transform.Rotate(new Vector3(0, 0, downSpeed));
             }
             else
             {
-                Debug.Log("Left at base");
+                //Debug.Log("Left at base");
             }
         }
     }
