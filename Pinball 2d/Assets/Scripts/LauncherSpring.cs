@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LauncherSpring : MonoBehaviour
 {
+    public LaunchBarrier barrier;
     public static KeyCode launchCode = KeyCode.Space;
     public static Vector3 launchPos = new Vector3(8.075f, -0.5f, 0);
     public BallTesting newBall;
@@ -30,10 +31,11 @@ public class LauncherSpring : MonoBehaviour
         else if (Input.GetKeyUp(launchCode))
         {
             float applyForce = (numFramesHeld * 300) / (float)MaxNumFramesHold;
-            newBall.rigidBall.position = launchPos;
+            newBall.rigidBall.position = new Vector3(launchPos.x, launchPos.y - (1.0f + (numFramesHeld / (float)MaxNumFramesHold)));
             newBall.rigidBall.AddForce(new Vector2(0.0f, applyForce), ForceMode2D.Impulse);
             Debug.Log("Launch Intensity: " + applyForce);
             numFramesHeld = 0;
+            barrier.collider.isTrigger = true;
         }
         transform.localScale = new Vector3(1, 1.0f - (numFramesHeld / (float)MaxNumFramesHold), 0);
         transform.localPosition = new Vector3(launchPos.x, launchPos.y - (2.0f + (numFramesHeld / (float)MaxNumFramesHold)));

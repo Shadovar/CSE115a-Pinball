@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\BallTesting.cs" />
     <Compile Include="Assets\Scripts\FlipperController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\LaunchBarrier.cs" />
     <Compile Include="Assets\Scripts\LauncherSpring.cs" />
     <Compile Include="Assets\Scripts\LeftFlipperController.cs" />
     <Compile Include="Assets\Scripts\ScoreControl.cs" />
