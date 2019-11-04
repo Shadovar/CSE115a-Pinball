@@ -65,13 +65,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BallFlipperCollision.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\LaunchBarrier.cs" />
+    <Compile Include="Assets\Scripts\LauncherSpring.cs" />
     <Compile Include="Assets\Scripts\leftFlipper.cs" />
     <Compile Include="Assets\Scripts\pauseScript.cs" />
     <Compile Include="Assets\Scripts\pinballScript.cs" />
     <Compile Include="Assets\Scripts\rightFlipper.cs" />
-    <Compile Include="Assets\Scripts\LaunchBarrier.cs" />
-    <Compile Include="Assets\Scripts\LauncherSpring.cs" />
-    <Compile Include="Assets\Scripts\LeftFlipperController.cs" />
     <Compile Include="Assets\Scripts\ScoreControl.cs" />
     <Compile Include="Assets\Scripts\torqueFlipper.cs" />
     <Reference Include="Unity.Timeline.Editor">

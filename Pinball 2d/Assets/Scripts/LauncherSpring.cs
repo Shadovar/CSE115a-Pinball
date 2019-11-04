@@ -7,7 +7,7 @@ public class LauncherSpring : MonoBehaviour
     public LaunchBarrier barrier;
     public static KeyCode launchCode = KeyCode.Space;
     public static Vector3 launchPos = new Vector3(8.075f, -0.5f, 0);
-    public BallTesting newBall;
+    public pinballScript newBall;
     private int numFramesHeld = 0;
     int MaxNumFramesHold = 30 * 3;
     // Start is called before the first frame update
