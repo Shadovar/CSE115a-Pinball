@@ -35,7 +35,7 @@ public class LauncherSpring : MonoBehaviour
         }
         else if (Input.GetKeyUp(launchCode))
         {
-            float applyForce = 150 + (numFramesHeld * 300) / (float)MaxNumFramesHold;
+            float applyForce = 300 + (numFramesHeld * 300) / (float)MaxNumFramesHold;
             newBall.rigidBall.position = new Vector3(launchPos.x, launchPos.y - (numFramesHeld / (float)MaxNumFramesHold) * springHeight);
             newBall.rigidBall.AddForce(new Vector2(0.0f, applyForce), ForceMode2D.Impulse);
             Debug.Log("Launch Intensity: " + applyForce);
@@ -43,6 +43,6 @@ public class LauncherSpring : MonoBehaviour
             barrier.collider.isTrigger = true;
         }
         transform.localScale = new Vector3(1, 1.0f - (numFramesHeld / (float)MaxNumFramesHold), 0);
-        transform.localPosition = new Vector3(launchPos.x, launchPos.y - (numFramesHeld / (float)MaxNumFramesHold) * springHeight);
+        transform.position = new Vector3(launchPos.x, launchPos.y - (numFramesHeld / (float)MaxNumFramesHold) * springHeight);
     }
 }
