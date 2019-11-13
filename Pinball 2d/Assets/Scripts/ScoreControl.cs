@@ -21,6 +21,11 @@ public class ScoreControl : MonoBehaviour
         score.text = "score: " + scorevalue;
     }
 
+    /// <summary>
+    /// Loads the score file.
+    /// </summary>
+    /// <param name="path">Path to score file.</param>
+    /// <remarks>If the file cannot be opened and read, the default score of 0 is used.</remarks>
     public static void Load(string path = defaultScorePath)
     {
         try
@@ -40,6 +45,11 @@ public class ScoreControl : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Saves the score data to a file.
+    /// </summary>
+    /// <param name="path">Path to the save file.</param>
+    /// <remarks>Overwrites any already existing file in path if one exists.</remarks>
     public static void Save(string path = defaultScorePath)
     {
         try
