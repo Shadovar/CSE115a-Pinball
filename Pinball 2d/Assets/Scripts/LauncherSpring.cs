@@ -48,6 +48,6 @@ public class LauncherSpring : MonoBehaviour
 
     public void restartGame()
     {
-        newBall.rigidBall.position = new Vector3(launchPos.x, launchPos.y - (numFramesHeld / (float)MaxNumFramesHold) * springHeight);
+        newBall.rigidBall.position = new Vector3(launchPos.x, launchPos.y + 5);
     }
 }
