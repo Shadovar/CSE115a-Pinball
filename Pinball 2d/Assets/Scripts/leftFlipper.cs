@@ -10,13 +10,9 @@ public class leftFlipper : MonoBehaviour
     float downSpeed = -8; //default -8
     public AudioClip leftFlipperSound;
     public AudioSource leftFlipperSource;
-
+    public KeyCode LeftFlipperKey = KeyCode.Z;
     //Sets inputs for the left flipper
-    bool leftFlipperInput()
-    {
-        return (Input.GetKey(KeyCode.Z)/* || Input.GetKey(KeyCode.Z)*/);
-    }
-
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -26,10 +22,13 @@ public class leftFlipper : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (leftFlipperInput())
+        if (Input.GetKeyDown(LeftFlipperKey))
+        {
+            leftFlipperSource.Play();
+        }
+        if (Input.GetKey(LeftFlipperKey))
         {
             //if it hasn't reached its maximum
-            leftFlipperSource.Play();
             if (transform.eulerAngles.z <= leftMaxRot || transform.eulerAngles.z >= 300)
             {
                 transform.Rotate(new Vector3(0, 0, upSpeed));
@@ -45,10 +44,10 @@ public class leftFlipper : MonoBehaviour
                 //Debug.Log(transform.eulerAngles.z + " < " + (leftRestingRot + downSpeed - 1) + " || > " + leftRestingRot);
                 transform.Rotate(new Vector3(0, 0, downSpeed));
             }
-            else
-            {
-                //Debug.Log("Left at base");
-            }
+            //else
+            //{
+            //    Debug.Log("Left at base");
+            //}
         }
     }
 }

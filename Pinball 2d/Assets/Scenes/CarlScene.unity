@@ -1260,6 +1260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightFlipperSound: {fileID: 8300000, guid: 66c9c993031a5c540a4e0dd8fe9f291f, type: 3}
   rightFlipperSource: {fileID: 815023224}
+  rightFlipperKey: 46
 --- !u!212 &815023222
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2334,8 +2335,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1509644442}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.516, y: 0, z: 1}
-  m_LocalScale: {x: 18.9728, y: 5.9604483, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 25, y: 40, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -3919,6 +3920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftFlipperSound: {fileID: 8300000, guid: 66c9c993031a5c540a4e0dd8fe9f291f, type: 3}
   leftFlipperSource: {fileID: 6082574617636456123}
+  LeftFlipperKey: 122
 --- !u!1 &1278784241471045991
 GameObject:
   m_ObjectHideFlags: 0

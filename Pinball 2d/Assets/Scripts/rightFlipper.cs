@@ -10,12 +10,9 @@ public class rightFlipper : MonoBehaviour
     float downSpeed = -8; //default -8
     public AudioClip rightFlipperSound;
     public AudioSource rightFlipperSource;
+    public KeyCode rightFlipperKey = KeyCode.Period;
 
     //Sets inputs for the right flipper
-    bool rightFlipperInput()
-    {
-        return (Input.GetKey(KeyCode.Period)/* || Input.GetKey(KeyCode.Period)*/);
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -26,9 +23,12 @@ public class rightFlipper : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (rightFlipperInput())
+        if(Input.GetKeyDown(rightFlipperKey))
         {
             rightFlipperSource.Play();
+        }
+        if (Input.GetKey(rightFlipperKey))
+        {
             Debug.Log("righthit?");
             //if it hasn't reached its maximum
             //uses subtraction for upward rotation because rotating clockwise
