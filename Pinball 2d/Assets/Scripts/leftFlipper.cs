@@ -8,6 +8,8 @@ public class leftFlipper : MonoBehaviour
     float leftRestingRot = 330; //default value: 330
     float upSpeed = 18; //default 18
     float downSpeed = -8; //default -8
+    public AudioClip leftFlipperSound;
+    public AudioSource leftFlipperSource;
 
     //Sets inputs for the left flipper
     bool leftFlipperInput()
@@ -18,7 +20,7 @@ public class leftFlipper : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        leftFlipperSource.clip = leftFlipperSound;   
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class leftFlipper : MonoBehaviour
         if (leftFlipperInput())
         {
             //if it hasn't reached its maximum
+            leftFlipperSource.Play();
             if (transform.eulerAngles.z <= leftMaxRot || transform.eulerAngles.z >= 300)
             {
                 transform.Rotate(new Vector3(0, 0, upSpeed));
