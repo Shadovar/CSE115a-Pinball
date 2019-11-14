@@ -13,6 +13,7 @@ public class pauseScript : MonoBehaviour
     void Start()
     {
         pauseMenu.SetActive(false);
+        ScoreControl.Load();
     }
 
     // Update is called once per frame
@@ -53,6 +54,7 @@ public class pauseScript : MonoBehaviour
     public void exitGame()
     {
         Debug.Log("quitting");
+        ScoreControl.Save();
         Application.Quit();
     }
 

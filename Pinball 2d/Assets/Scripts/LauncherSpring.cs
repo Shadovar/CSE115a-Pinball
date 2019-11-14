@@ -45,4 +45,9 @@ public class LauncherSpring : MonoBehaviour
         transform.localScale = new Vector3(1, 1.0f - (numFramesHeld / (float)MaxNumFramesHold), 0);
         transform.position = new Vector3(launchPos.x, launchPos.y - (numFramesHeld / (float)MaxNumFramesHold) * springHeight);
     }
+
+    public void restartGame()
+    {
+        newBall.rigidBall.position = new Vector3(launchPos.x, launchPos.y + 5);
+    }
 }
