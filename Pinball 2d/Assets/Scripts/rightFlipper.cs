@@ -21,7 +21,7 @@ public class rightFlipper : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if(Input.GetKeyDown(rightFlipperKey))
         {
@@ -29,7 +29,6 @@ public class rightFlipper : MonoBehaviour
         }
         if (Input.GetKey(rightFlipperKey))
         {
-            Debug.Log("righthit?");
             //if it hasn't reached its maximum
             //uses subtraction for upward rotation because rotating clockwise
             if (transform.eulerAngles.z >= rightMaxRot)

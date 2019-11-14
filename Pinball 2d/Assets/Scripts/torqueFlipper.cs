@@ -5,38 +5,55 @@ using UnityEngine;
 public class torqueFlipper : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public float torqueUp;
-    public float torqueDown;
+    float rightMaxRot = 145; //default value: 145
+    float rightRestingRot = 210; //default value: 210
+    float upTorque = -160; //default 18
+    float downTorque = 100; //default -8
+    public AudioClip rightFlipperSound;
+    public AudioSource rightFlipperSource;
+    public KeyCode rightFlipperKey = KeyCode.RightShift;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rightFlipperSource.clip = rightFlipperSound;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Right Flipper Functionality
+        //Right flipper functionality
+        if (Input.GetKeyDown(rightFlipperKey))
+        {
+            rightFlipperSource.Play();
+        }
 
-        //if right shift is held/pressed
-        if (Input.GetKey(KeyCode.RightShift))
+        if (Input.GetKey(rightFlipperKey))
         {
             //if it hasn't reached its maximum
-            //if (transform.eulerAngles.z >= 145)
-            //{
-                //Rotate
-                rb.AddTorque(torqueUp);
-            //}
+            //uses subtraction for upward rotation because rotating clockwise
+            if (transform.eulerAngles.z >= rightMaxRot)
+            {
+                rb.freezeRotation = false;
+                rb.AddTorque(upTorque);
+            }
+            else
+            {
+                rb.freezeRotation = true;
+            }
+
         }
         else
         {
             //if it hasn't reached its base
-            //if (transform.eulerAngles.z <= 210)
-            //{
-            //Rotate
-            rb.AddTorque(torqueDown);
-            //}
-
+            if (transform.eulerAngles.z <= rightRestingRot)
+            {
+                rb.freezeRotation = false;
+                rb.AddTorque(downTorque);
+            }
+            else
+            {
+                rb.freezeRotation = true;
+            }
         }
     }
 }

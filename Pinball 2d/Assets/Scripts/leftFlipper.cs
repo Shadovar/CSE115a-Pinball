@@ -20,7 +20,7 @@ public class leftFlipper : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetKeyDown(LeftFlipperKey))
         {
