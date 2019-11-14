@@ -1,0 +1,20 @@
+
+Done:
+-Pushed successfully to GitHub
+-Downloaded by others.
+-Inspected and run successfully by other person(s).
+-Manually tested for functionality.
+-All non-Unity created functions (Eg Update is Unity created) need documentation
+	in standard C# tripple-slash comment above function.
+
+Acceptance:
+-Approved by jacob.
+-All features are merged into a single scene.
+-Any feature interacts properly with ALL other features.
+	Eg: Flippers launch the ball, which provides score when a target is hit.
+	Some features may not interact with other features, which is accpetable.
+-Performance is acceptable. (Frame rate above 24, less than 2GB memory usage)
+-User input/output does not overlap other features. (Eg: space cannot both pause and 	launch 	the ball, graphics elements don't overlap)
+-Feature only does what it's supposed to do. Any extra things for debugging, etc
+	must not be detectable to the user. Any standard logging must go to Debug.Log,
+	or log to a file.
