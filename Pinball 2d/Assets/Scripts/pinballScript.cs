@@ -36,6 +36,7 @@ public class pinballScript : MonoBehaviour
         if (collision.transform.name == "Flipper")
         {
             ScoreControl.scorevalue += 10;
+            Debug.Log("Hit Flipper");
         }
         if (collision.transform.name == "YouLose")
         {
