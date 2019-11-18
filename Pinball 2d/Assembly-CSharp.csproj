@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BallFlipperCollision.cs" />
+    <Compile Include="Assets\Scripts\DontClipThroughStuff.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\LaunchBarrier.cs" />
     <Compile Include="Assets\Scripts\LauncherSpring.cs" />

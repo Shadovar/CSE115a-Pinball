@@ -29,7 +29,6 @@ public class rightFlipper : MonoBehaviour
         }
         if (Input.GetKey(rightFlipperKey))
         {
-            Debug.Log("righthit?");
             //if it hasn't reached its maximum
             //uses subtraction for upward rotation because rotating clockwise
             if (transform.eulerAngles.z >= rightMaxRot)

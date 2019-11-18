@@ -18,10 +18,7 @@ public class pinballScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            rigidBall.AddForce(transform.up * 3, ForceMode2D.Force);
-        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -39,6 +36,7 @@ public class pinballScript : MonoBehaviour
         if (collision.transform.name == "Flipper")
         {
             ScoreControl.scorevalue += 10;
+            Debug.Log("Hit Flipper");
         }
         if (collision.transform.name == "YouLose")
         {
