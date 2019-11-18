@@ -64,7 +64,7 @@ public class ScoreControl : MonoBehaviour
     void Update()
     {
         Tuple<string, int> globalHigh = GetGlobalHigh();
-        score.text = "score: " + scorevalue + "(Personal High " + currentHighScore + ")\nHigh:" +
+        score.text = "score: " + scorevalue + " (Personal High " + currentHighScore + ")\nGlobal High: " +
             globalHigh.Item1 + " " + globalHigh.Item2;
     }
 
