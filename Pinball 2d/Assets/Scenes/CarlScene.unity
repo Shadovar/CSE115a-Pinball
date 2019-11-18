@@ -3542,6 +3542,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4023882754919479922, guid: 02da28df8024a544ea98301f4be79751,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bd6bcde173a67354ca34b41df3039974,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02da28df8024a544ea98301f4be79751, type: 3}
 --- !u!1 &1969743415
@@ -4377,6 +4383,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Flipper
       objectReference: {fileID: 0}
+    - target: {fileID: 2374425156748466768, guid: e14f56351d0542245809af82ec6b911f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Flipper
+      objectReference: {fileID: 0}
     - target: {fileID: 1844975835666318019, guid: e14f56351d0542245809af82ec6b911f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4447,11 +4458,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Flipper
       objectReference: {fileID: 0}
-    - target: {fileID: 2374425156748466768, guid: e14f56351d0542245809af82ec6b911f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Flipper
-      objectReference: {fileID: 0}
     - target: {fileID: 2374425156748466772, guid: e14f56351d0542245809af82ec6b911f,
         type: 3}
       propertyPath: m_Sprite
@@ -4480,6 +4486,11 @@ PrefabInstance:
       value: RightFlipper
       objectReference: {fileID: 0}
     - target: {fileID: 2859341316949649044, guid: 0cc98514608ef8f42a28bcf562c625a3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Flipper
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895979511066297682, guid: 0cc98514608ef8f42a28bcf562c625a3,
         type: 3}
       propertyPath: m_TagString
       value: Flipper
@@ -4550,11 +4561,6 @@ PrefabInstance:
       value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 3895979512148140935, guid: 0cc98514608ef8f42a28bcf562c625a3,
-        type: 3}
-      propertyPath: m_TagString
-      value: Flipper
-      objectReference: {fileID: 0}
-    - target: {fileID: 3895979511066297682, guid: 0cc98514608ef8f42a28bcf562c625a3,
         type: 3}
       propertyPath: m_TagString
       value: Flipper
