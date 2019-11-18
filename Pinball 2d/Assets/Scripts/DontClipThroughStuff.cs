@@ -3,50 +3,53 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DontClipThroughStuff : MonoBehaviour
+//Partially Retrieved from: https://wiki.unity3d.com/index.php?title=DontGoThroughThings#C.23_-_DontGoThroughThings.cs
 {
+    // Careful when setting this to true - it might cause double
+    // events to be fired - but it won't pass through the trigger
+    public bool sendTriggerMessage = false;
 
-    public Rigidbody2D rb;
-    public CircleCollider2D cc2d;
-    private float sqrBreadthOfCollider; //The squared size of how far the circle can reach
-    private Vector2 previousLocation;
+    private int layerMask = 1 << 10; //Raycast will mask all layers except 10, the flipper layer
+    public float skinWidth = 0.1f; //probably doesn't need to be changed 
 
-    // Start is called before the first frame update
+    private float minimumExtent;
+    private float partialExtent;
+    private float sqrMinimumExtent;
+    private Vector2 previousPosition;
+    private Rigidbody2D rb2d;
+    private CircleCollider2D collider2d;
+
+    //initialize values 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        cc2d = GetComponent<CircleCollider2D>();
-        sqrBreadthOfCollider = Mathf.Min(cc2d.bounds.extents.x, cc2d.bounds.extents.y);
-        sqrBreadthOfCollider = sqrBreadthOfCollider * sqrBreadthOfCollider; //Squaring it for comparison to magnitudes
-        previousLocation = rb.position;
+        rb2d = GetComponent<Rigidbody2D>();
+        collider2d = GetComponent<CircleCollider2D>();
+        previousPosition = rb2d.position;
+        minimumExtent = Mathf.Min(collider2d.bounds.extents.x, collider2d.bounds.extents.y);
+        partialExtent = minimumExtent * (1.0f - skinWidth);
+        sqrMinimumExtent = minimumExtent * minimumExtent;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        Vector2 stepMovement = rb.position - previousLocation;
-        float sqrMovementMagnitude = stepMovement.sqrMagnitude;
+        //have we moved more than our minimum extent? 
+        Vector2 movementThisStep = rb2d.position - previousPosition;
+        float movementSqrMagnitude = movementThisStep.sqrMagnitude;
 
-        //If we have moved more than our minimum
-        if(sqrMovementMagnitude > sqrBreadthOfCollider)
+        if (movementSqrMagnitude > sqrMinimumExtent)
         {
-            float movementMagnitude = Mathf.Sqrt(sqrMovementMagnitude);
-            RaycastHit2D hitPossible = Physics2D.Raycast(previousLocation, stepMovement, movementMagnitude * 1.5f);
+            float movementMagnitude = Mathf.Sqrt(movementSqrMagnitude);
+            RaycastHit2D hitInfo = Physics2D.Raycast(previousPosition, movementThisStep, movementMagnitude, layerMask);
 
-            if (hitPossible.collider != null)
+            //check for obstructions we might have missed 
+            if (hitInfo.collider != null)
             {
-                /*if (hitPossible.collider.tag == "Launcher")
-                {
-                    Debug.Log("DontClip: About to hit launcher");
-                }
-                else
-                {*/
-                rb.position = hitPossible.point - (stepMovement /* / movementMagnitude */);
-                rb.AddForce(Vector2.up * 300);
-                //rb.velocity = rb.velocity * .5f;
-                Debug.Log("Dont Clip: Imminent Collision moved");
-                //}
+                rb2d.position = hitInfo.point - (movementThisStep / movementMagnitude) /** partialExtent*/;
+                Debug.Log("DontClip: collider name: " + hitInfo.collider.gameObject.name);
+                rb2d.AddForce(-movementThisStep*500);
             }
         }
-        previousLocation = rb.position;
+
+        previousPosition = rb2d.position;
     }
 }
