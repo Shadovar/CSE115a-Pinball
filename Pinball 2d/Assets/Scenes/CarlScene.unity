@@ -1127,6 +1127,7 @@ GameObject:
   - component: {fileID: 793400173}
   - component: {fileID: 793400177}
   - component: {fileID: 793400176}
+  - component: {fileID: 793400180}
   - component: {fileID: 793400178}
   - component: {fileID: 793400179}
   m_Layer: 0
@@ -1214,7 +1215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 793400172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.1, y: 4, z: 0}
+  m_LocalPosition: {x: 4.83, y: 4.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1361,6 +1362,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &793400180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793400172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555adf30e288266478a8a432402b7f9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  cc2d: {fileID: 0}
 --- !u!1 &815023220
 GameObject:
   m_ObjectHideFlags: 0
@@ -3286,7 +3301,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.1, y: 0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3462,7 +3477,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.1, y: 0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3767,6 +3782,11 @@ PrefabInstance:
       propertyPath: launchPos.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4023882754919474572, guid: 02da28df8024a544ea98301f4be79751,
+        type: 3}
+      propertyPath: m_TagString
+      value: Launcher
+      objectReference: {fileID: 0}
     - target: {fileID: 6419389273031893943, guid: 02da28df8024a544ea98301f4be79751,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3831,6 +3851,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023882754334802612, guid: 02da28df8024a544ea98301f4be79751,
+        type: 3}
+      propertyPath: m_TagString
+      value: Launcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023882754605269366, guid: 02da28df8024a544ea98301f4be79751,
+        type: 3}
+      propertyPath: m_TagString
+      value: Launcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023882754909150614, guid: 02da28df8024a544ea98301f4be79751,
+        type: 3}
+      propertyPath: m_TagString
+      value: Launcher
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02da28df8024a544ea98301f4be79751, type: 3}

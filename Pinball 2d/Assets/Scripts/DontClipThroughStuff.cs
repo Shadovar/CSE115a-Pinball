@@ -30,11 +30,23 @@ public class DontClipThroughStuff : MonoBehaviour
         if(sqrMovementMagnitude > sqrBreadthOfCollider)
         {
             float movementMagnitude = Mathf.Sqrt(sqrMovementMagnitude);
-            RaycastHit2D hitPossible;
-            //if (Physics2D.Raycast())
-            //{
+            RaycastHit2D hitPossible = Physics2D.Raycast(previousLocation, stepMovement, movementMagnitude * 1.5f);
 
-            //}
+            if (hitPossible.collider != null)
+            {
+                /*if (hitPossible.collider.tag == "Launcher")
+                {
+                    Debug.Log("DontClip: About to hit launcher");
+                }
+                else
+                {*/
+                rb.position = hitPossible.point - (stepMovement /* / movementMagnitude */);
+                rb.AddForce(Vector2.up * 300);
+                //rb.velocity = rb.velocity * .5f;
+                Debug.Log("Dont Clip: Imminent Collision moved");
+                //}
+            }
         }
+        previousLocation = rb.position;
     }
 }
