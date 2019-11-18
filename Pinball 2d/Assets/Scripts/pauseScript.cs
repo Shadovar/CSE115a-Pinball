@@ -54,6 +54,7 @@ public class pauseScript : MonoBehaviour
     public void exitGame()
     {
         Debug.Log("quitting");
+        ScoreControl.CommitScore("User");
         ScoreControl.Save();
         Application.Quit();
     }
