@@ -25,7 +25,7 @@ public class DontClipThroughStuff : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         collider2d = GetComponent<CircleCollider2D>();
         previousPosition = rb2d.position;
-        minimumExtent = Mathf.Min(collider2d.bounds.extents.x, collider2d.bounds.extents.y);
+        minimumExtent = collider2d.radius;
         partialExtent = minimumExtent * (1.0f - skinWidth);
         sqrMinimumExtent = minimumExtent * minimumExtent;
     }
@@ -44,7 +44,7 @@ public class DontClipThroughStuff : MonoBehaviour
             //check for obstructions we might have missed 
             if (hitInfo.collider != null)
             {
-                rb2d.position = hitInfo.point - (movementThisStep / movementMagnitude) /** partialExtent*/;
+                rb2d.position = hitInfo.point - (movementThisStep / movementMagnitude) * partialExtent;
                 Debug.Log("DontClip: collider name: " + hitInfo.collider.gameObject.name);
                 rb2d.AddForce(-movementThisStep*500);
             }

@@ -39,15 +39,17 @@ public class pinballScript : MonoBehaviour
             Debug.Log("Hit Flipper");
         }
         // hit bumpers
-        if (collision.transform.name == "Triangle")
+        /*if (collision.transform.name == "Triangle")
         {
             ScoreControl.scorevalue += 10;
-        }
+        }*/
+        
         // lose the game
         if (collision.transform.name == "YouLose")
         {
             ScoreControl.scorevalue = 0;
             transform.position = startPos;
+            rigidBall.velocity = new Vector2(0, 0);
         }
         // bonus points
         if (collision.transform.name == "Bonus1")
@@ -86,6 +88,21 @@ public class pinballScript : MonoBehaviour
                 bonustracker = 0;
                 bonus3 = 0;
             }
+        }
+    }
+
+    private void OnCollisionEnter2D (Collision2D collision)
+    {
+        //Debug.Log("Pinball Script: OnCollisionEnter2D: " + collision.gameObject.name + ", " + collision.gameObject.tag);
+
+        if (collision.gameObject.tag.Equals("Bumper"))
+        {
+            Debug.Log("pinballScript: Hit bumper");
+            ScoreControl.scorevalue += 10;
+            Vector2 colliderLoc = collision.transform.position;
+            float outwardForce = 100f;
+            rigidBall.AddForce(outwardForce * (new Vector2(gameObject.transform.position.x, gameObject.transform.position.y) - colliderLoc));
+            //rigidBall.AddForce(-rigidBall.velocity * 50);
         }
     }
 }
