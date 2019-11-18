@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Flipper
   - Launcher
+  - Bumper
   layers:
   - Default
   - TransparentFX

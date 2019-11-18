@@ -7,7 +7,7 @@ public class torqueFlipper : MonoBehaviour
     public Rigidbody2D rb;
     float rightMaxRot = 145; //default value: 145
     float rightRestingRot = 210; //default value: 210
-    float upTorque = -160; //default 18
+    float upTorque = -360; //default 18
     float downTorque = 100; //default -8
     public AudioClip rightFlipperSound;
     public AudioSource rightFlipperSource;
@@ -16,6 +16,7 @@ public class torqueFlipper : MonoBehaviour
     void Start()
     {
         rightFlipperSource.clip = rightFlipperSound;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
