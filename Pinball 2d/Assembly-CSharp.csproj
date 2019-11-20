@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\pinballScript.cs" />
     <Compile Include="Assets\Scripts\rightFlipper.cs" />
     <Compile Include="Assets\Scripts\ScoreControl.cs" />
+    <Compile Include="Assets\Scripts\TableTilt.cs" />
     <Compile Include="Assets\Scripts\torqueFlipper.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/User/Desktop/CSE115a-Pinball/Pinball 2d/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
