@@ -11,6 +11,8 @@ public class LauncherSpring : MonoBehaviour
     public float springHeight;
     private int numFramesHeld = 0;
     int MaxNumFramesHold = 30 * 3;
+    public AudioClip springSound;
+    public AudioSource springSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,7 @@ public class LauncherSpring : MonoBehaviour
         launchPos = transform.position;
         launchPos.y += transform.localScale.y * 1;
         springHeight = transform.localScale.y * 2;
+        springSource.clip = springSound;
     }
 
     // Update is called once per frame
@@ -41,6 +44,7 @@ public class LauncherSpring : MonoBehaviour
             Debug.Log("Launch Intensity: " + applyForce);
             numFramesHeld = 0;
             barrier.collider.isTrigger = true;
+            springSource.Play();
         }
         transform.localScale = new Vector3(1, 1.0f - (numFramesHeld / (float)MaxNumFramesHold), 0);
         transform.position = new Vector3(launchPos.x, launchPos.y - (numFramesHeld / (float)MaxNumFramesHold) * springHeight);

@@ -25,7 +25,7 @@ public class pinballScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log(collision.transform.name);
-        if (rigidBall.velocity.magnitude > 10)
+        if (rigidBall.velocity.magnitude > 2)
         {
             hitWallSource.Play();
             Debug.Log("played");
