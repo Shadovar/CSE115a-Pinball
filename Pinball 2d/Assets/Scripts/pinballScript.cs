@@ -10,6 +10,9 @@ public class pinballScript : MonoBehaviour
     public AudioClip hitWallSound;
     public AudioSource hitWallSource;
     public int bonustracker = 0;
+    public int bonus1 = 0;
+    public int bonus2 = 0;
+    public int bonus3 = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +51,8 @@ public class pinballScript : MonoBehaviour
         if (collision.transform.name == "YouLose")
         {
             ScoreControl.scorevalue = 0;
+            bonustracker = 0;
+            bonus1 = 0;
             transform.position = startPos;
             rigidBall.velocity = new Vector2(0, 0);
         }
@@ -55,9 +60,9 @@ public class pinballScript : MonoBehaviour
         if (collision.transform.name == "Bonus1")
         {
             bonustracker += 1;
-            int bonus1 = 0;
+            //int bonus1 = 0;
             bonus1++;
-            Debug.Log(bonus1);
+            Debug.Log("bonus1: "+ bonus1);
             if (bonustracker >= 3 && bonus1 == 1)
             {
                 ScoreControl.scorevalue += 100;
@@ -68,8 +73,9 @@ public class pinballScript : MonoBehaviour
         if (collision.transform.name == "Bonus2")
         {
             bonustracker += 1;
-            int bonus2 = 0;
+            //int bonus2 = 0;
             bonus2++;
+            Debug.Log("bonus2: " + bonus2);
             if (bonustracker >= 3 && bonus2 == 1)
             {
                 ScoreControl.scorevalue += 100;
@@ -80,8 +86,9 @@ public class pinballScript : MonoBehaviour
         if (collision.transform.name == "Bonus3")
         {
             bonustracker += 1;
-            int bonus3 = 0;
+            //int bonus3 = 0;
             bonus3++;
+            Debug.Log("bonus3: " + bonus3);
             if (bonustracker >= 3 && bonus3 == 1)
             {
                 ScoreControl.scorevalue += 100;
@@ -97,7 +104,7 @@ public class pinballScript : MonoBehaviour
 
         if (collision.gameObject.tag.Equals("Bumper"))
         {
-            Debug.Log("pinballScript: Hit bumper");
+            //Debug.Log("pinballScript: Hit bumper");
             ScoreControl.scorevalue += 10;
             Vector2 colliderLoc = collision.transform.position;
             float outwardForce = 100f;
