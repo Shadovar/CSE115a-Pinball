@@ -659,7 +659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196897ca7a91e1e40adfc44808d6c9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftFlipperSound: {fileID: 8300000, guid: 66c9c993031a5c540a4e0dd8fe9f291f, type: 3}
+  leftFlipperSound: {fileID: 8300000, guid: ecbcabee9fad3334195822edaa61113d, type: 3}
   leftFlipperSource: {fileID: 4966516560070217784}
   LeftFlipperKey: 122
 --- !u!82 &4966516560070217784
