@@ -12,6 +12,7 @@ public class leftFlipper : MonoBehaviour
     public AudioSource leftFlipperSource;
     public KeyCode LeftFlipperKey = KeyCode.Z;
     public GameObject childFlipper;
+    public bool paused = false;
     //Sets inputs for the left flipper
    
     // Start is called before the first frame update
@@ -20,44 +21,52 @@ public class leftFlipper : MonoBehaviour
         leftFlipperSource.clip = leftFlipperSound;   
     }
 
+    public void leftChangePauseState()
+    {
+        paused = !paused;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(LeftFlipperKey))
+        if (!paused)
         {
-            leftFlipperSource.Play();
-        }
-        if (Input.GetKey(LeftFlipperKey))
-        {
-            //if it hasn't reached its maximum
-            if (transform.eulerAngles.z <= leftMaxRot || transform.eulerAngles.z >= 300)
+            if (Input.GetKeyDown(LeftFlipperKey))
             {
-                transform.Rotate(new Vector3(0, 0, upSpeed));
-                //Tell child flipper to be able to push ball up
-                childFlipper.gameObject.SendMessage("ChangeColliderState", true);
+                leftFlipperSource.Play();
+            }
+            if (Input.GetKey(LeftFlipperKey))
+            {
+                //if it hasn't reached its maximum
+                if (transform.eulerAngles.z <= leftMaxRot || transform.eulerAngles.z >= 300)
+                {
+                    transform.Rotate(new Vector3(0, 0, upSpeed));
+                    //Tell child flipper to be able to push ball up
+                    childFlipper.gameObject.SendMessage("ChangeColliderState", true);
+                }
+                else
+                {
+                    //Tell child flipper to no longer provide upward momentum to ball
+                    childFlipper.gameObject.SendMessage("ChangeColliderState", false);
+                }
             }
             else
             {
-                //Tell child flipper to no longer provide upward momentum to ball
-                childFlipper.gameObject.SendMessage("ChangeColliderState", false);
+                //if it hasn't reached its base
+                //a range is being checked !(322, 330) because the left flipper has to go between 30 and 330 degrees
+                if (transform.eulerAngles.z <= (leftRestingRot + downSpeed - 1)
+                     || transform.eulerAngles.z >= leftRestingRot)
+                {
+                    //Debug.Log(transform.eulerAngles.z + " < " + (leftRestingRot + downSpeed - 1) + " || > " + leftRestingRot);
+                    transform.Rotate(new Vector3(0, 0, downSpeed));
+                    //Tell child flipper to no longer provide upward momentum to ball
+                    childFlipper.gameObject.SendMessage("ChangeColliderState", false);
+                }
+                //else
+                //{
+                //    Debug.Log("Left at base");
+                //}
             }
-        }
-        else
-        {
-            //if it hasn't reached its base
-            //a range is being checked !(322, 330) because the left flipper has to go between 30 and 330 degrees
-            if (transform.eulerAngles.z <= (leftRestingRot + downSpeed - 1)
-                 || transform.eulerAngles.z >= leftRestingRot)
-            {
-                //Debug.Log(transform.eulerAngles.z + " < " + (leftRestingRot + downSpeed - 1) + " || > " + leftRestingRot);
-                transform.Rotate(new Vector3(0, 0, downSpeed));
-                //Tell child flipper to no longer provide upward momentum to ball
-                childFlipper.gameObject.SendMessage("ChangeColliderState", false);
-            }
-            //else
-            //{
-            //    Debug.Log("Left at base");
-            //}
         }
     }
 }

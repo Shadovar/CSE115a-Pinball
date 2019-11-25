@@ -12,6 +12,7 @@ public class rightFlipper : MonoBehaviour
     public AudioSource rightFlipperSource;
     public KeyCode rightFlipperKey = KeyCode.Period;
     public GameObject childFlipper;
+    public bool paused = false;
 
     //Sets inputs for the right flipper
 
@@ -21,39 +22,47 @@ public class rightFlipper : MonoBehaviour
         rightFlipperSource.clip = rightFlipperSound;
     }
 
+    public void rightChangePauseState()
+    {
+        paused = !paused;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(Input.GetKeyDown(rightFlipperKey))
+        if (!paused)
         {
-            rightFlipperSource.Play();
-        }
-        if (Input.GetKey(rightFlipperKey))
-        {
-            //if it hasn't reached its maximum
-            //uses subtraction for upward rotation because rotating clockwise
-            if (transform.eulerAngles.z >= rightMaxRot)
+            if (Input.GetKeyDown(rightFlipperKey))
             {
-                transform.Rotate(new Vector3(0, 0, -upSpeed));
-                //Tell flipper to be able to push ball up
-                childFlipper.gameObject.SendMessage("ChangeColliderState", true);
+                rightFlipperSource.Play();
+            }
+            if (Input.GetKey(rightFlipperKey))
+            {
+                //if it hasn't reached its maximum
+                //uses subtraction for upward rotation because rotating clockwise
+                if (transform.eulerAngles.z >= rightMaxRot)
+                {
+                    transform.Rotate(new Vector3(0, 0, -upSpeed));
+                    //Tell flipper to be able to push ball up
+                    childFlipper.gameObject.SendMessage("ChangeColliderState", true);
+                }
+                else
+                {
+                    //Tell flipper to no longer be able to push ball up
+                    childFlipper.gameObject.SendMessage("ChangeColliderState", false);
+                }
             }
             else
             {
+                //if it hasn't reached its base
+                if (transform.eulerAngles.z <= rightRestingRot)
+                {
+                    transform.Rotate(new Vector3(0, 0, -downSpeed));
+
+                }
                 //Tell flipper to no longer be able to push ball up
                 childFlipper.gameObject.SendMessage("ChangeColliderState", false);
             }
-        }
-        else
-        {
-            //if it hasn't reached its base
-            if (transform.eulerAngles.z <= rightRestingRot)
-            {
-                transform.Rotate(new Vector3(0, 0, -downSpeed));
-
-            }
-            //Tell flipper to no longer be able to push ball up
-            childFlipper.gameObject.SendMessage("ChangeColliderState", false);
         }
     }
 

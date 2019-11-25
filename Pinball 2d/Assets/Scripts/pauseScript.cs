@@ -9,6 +9,8 @@ public class pauseScript : MonoBehaviour
     public Rigidbody2D ball;
     Vector3 holdBallVelocity;
     float holdBallGravity;
+    public leftFlipper leftFlipperScript;
+    public rightFlipper RightFlipperScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,8 @@ public class pauseScript : MonoBehaviour
         paused = false;
         ball.velocity = holdBallVelocity;
         ball.gravityScale = holdBallGravity;
+        leftFlipperScript.leftChangePauseState();
+        RightFlipperScript.rightChangePauseState();
     }
 
     public void Pause()
@@ -49,6 +53,8 @@ public class pauseScript : MonoBehaviour
         holdBallGravity = ball.gravityScale;
         ball.velocity = new Vector3(0,0,0);
         ball.gravityScale = 0f;
+        leftFlipperScript.leftChangePauseState();
+        RightFlipperScript.rightChangePauseState();
     }
 
     public void exitGame()

@@ -1963,6 +1963,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1719866606}
   ball: {fileID: 793400173}
+  leftFlipperScript: {fileID: 1383560831}
+  RightFlipperScript: {fileID: 1501028163}
 --- !u!114 &1113357240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2681,6 +2683,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collider: {fileID: 0}
   rigidbody: {fileID: 0}
+--- !u!114 &1383560831 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8548830867455329445, guid: e14f56351d0542245809af82ec6b911f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1190420469637174915}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 196897ca7a91e1e40adfc44808d6c9ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1501028163 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3895979512148140934, guid: 0cc98514608ef8f42a28bcf562c625a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 9199403727595272578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f9745963a46ff4b90ddf4b21095b80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1502694622
 GameObject:
   m_ObjectHideFlags: 0
@@ -2814,7 +2840,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b5bff196e59f3104fae2fa00b64b2bef, type: 3}
-  m_Color: {r: 0.039916348, g: 0.06220552, b: 0.3679245, a: 1}
+  m_Color: {r: 0.6266906, g: 0.3537736, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
