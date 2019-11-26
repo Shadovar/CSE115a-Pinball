@@ -22,7 +22,8 @@ public class BallFlipperCollision : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Flipper"))
         {
-            Debug.Log("Of type flipper");
+            Debug.Log("BallFlipperCollision: Of type flipper");
+            Debug.Log("BallFlipperCollision: Name of object is " + gameObject.transform.name);
             rb2d.AddForce(Vector2.up * thrust, ForceMode2D.Impulse);
         }
     }

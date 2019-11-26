@@ -10,6 +10,7 @@ public class pinballScript : MonoBehaviour
     public AudioClip hitWallSound;
     public AudioSource hitWallSource;
     public int bonustracker = 0;
+    private float forceFromFlipper = 50f;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,9 +35,11 @@ public class pinballScript : MonoBehaviour
         {
             Debug.Log(rigidBall.velocity.magnitude);
         }
-        if (collision.transform.name == "Flipper")
+        if (collision.gameObject.CompareTag("Flipper"))
         {
-            Debug.Log("Hit Flipper");
+            Debug.Log("PinballScript: Hit Flipper");
+            //rigidBall.AddForce(Vector2.up * forceFromFlipper, ForceMode2D.Impulse);
+
         }
         // hit bumpers
         /*if (collision.transform.name == "Triangle")
@@ -104,5 +107,11 @@ public class pinballScript : MonoBehaviour
             rigidBall.AddForce(outwardForce * (new Vector2(gameObject.transform.position.x, gameObject.transform.position.y) - colliderLoc));
             //rigidBall.AddForce(-rigidBall.velocity * 50);
         }
+    }
+
+    public void FlipperCollision()
+    {
+        Debug.Log("pinballScript: recived message for Flipper Collision");
+        rigidBall.AddForce(Vector2.up * forceFromFlipper, ForceMode2D.Impulse);
     }
 }

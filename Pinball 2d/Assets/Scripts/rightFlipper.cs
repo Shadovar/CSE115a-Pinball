@@ -11,6 +11,7 @@ public class rightFlipper : MonoBehaviour
     public AudioClip rightFlipperSound;
     public AudioSource rightFlipperSource;
     public KeyCode rightFlipperKey = KeyCode.Period;
+    public GameObject childFlipper;
 
     //Sets inputs for the right flipper
 
@@ -34,8 +35,14 @@ public class rightFlipper : MonoBehaviour
             if (transform.eulerAngles.z >= rightMaxRot)
             {
                 transform.Rotate(new Vector3(0, 0, -upSpeed));
+                //Tell flipper to be able to push ball up
+                childFlipper.gameObject.SendMessage("ChangeColliderState", true);
             }
-    
+            else
+            {
+                //Tell flipper to no longer be able to push ball up
+                childFlipper.gameObject.SendMessage("ChangeColliderState", false);
+            }
         }
         else
         {
@@ -43,7 +50,24 @@ public class rightFlipper : MonoBehaviour
             if (transform.eulerAngles.z <= rightRestingRot)
             {
                 transform.Rotate(new Vector3(0, 0, -downSpeed));
+
             }
+            //Tell flipper to no longer be able to push ball up
+            childFlipper.gameObject.SendMessage("ChangeColliderState", false);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        //if (other.gameObject.CompareTag("Pinball"))
+        //{
+            Debug.Log("rightFlipper: Of type Pinball");
+            //if ((transform.eulerAngles.z >= rightMaxRot || transform.eulerAngles.z <= rightRestingRot))
+            //{
+                Debug.Log("rightFlipper: Name of this object is " + gameObject.transform.name);
+                other.gameObject.SendMessage("FlipperCollision");
+                Debug.Log("rightFlipper: Sent Flipper Collision");
+            //}
+        //}
     }
 }

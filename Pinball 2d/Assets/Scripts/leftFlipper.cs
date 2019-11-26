@@ -11,6 +11,7 @@ public class leftFlipper : MonoBehaviour
     public AudioClip leftFlipperSound;
     public AudioSource leftFlipperSource;
     public KeyCode LeftFlipperKey = KeyCode.Z;
+    public GameObject childFlipper;
     //Sets inputs for the left flipper
    
     // Start is called before the first frame update
@@ -32,6 +33,13 @@ public class leftFlipper : MonoBehaviour
             if (transform.eulerAngles.z <= leftMaxRot || transform.eulerAngles.z >= 300)
             {
                 transform.Rotate(new Vector3(0, 0, upSpeed));
+                //Tell child flipper to be able to push ball up
+                childFlipper.gameObject.SendMessage("ChangeColliderState", true);
+            }
+            else
+            {
+                //Tell child flipper to no longer provide upward momentum to ball
+                childFlipper.gameObject.SendMessage("ChangeColliderState", false);
             }
         }
         else
@@ -43,6 +51,8 @@ public class leftFlipper : MonoBehaviour
             {
                 //Debug.Log(transform.eulerAngles.z + " < " + (leftRestingRot + downSpeed - 1) + " || > " + leftRestingRot);
                 transform.Rotate(new Vector3(0, 0, downSpeed));
+                //Tell child flipper to no longer provide upward momentum to ball
+                childFlipper.gameObject.SendMessage("ChangeColliderState", false);
             }
             //else
             //{

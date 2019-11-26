@@ -126,6 +126,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 9199403727595272578}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &49448098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49448097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13773950a25c7b4daa681eb7c23c897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  polygonCollider2D: {fileID: 49448099}
 --- !u!60 &49448099
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1303,12 +1316,12 @@ GameObject:
   - component: {fileID: 793400177}
   - component: {fileID: 793400176}
   - component: {fileID: 793400180}
-  - component: {fileID: 793400178}
   - component: {fileID: 793400179}
   - component: {fileID: 793400181}
+  - component: {fileID: 793400178}
   m_Layer: 8
   m_Name: PinBall
-  m_TagString: Untagged
+  m_TagString: Pinball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1546,7 +1559,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 793400172}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 555adf30e288266478a8a432402b7f9f, type: 3}
   m_Name: 
@@ -2731,6 +2744,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1190420469637174915}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1590027078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590027077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13773950a25c7b4daa681eb7c23c897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  polygonCollider2D: {fileID: 1590027079}
 --- !u!60 &1590027079
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4681,6 +4707,11 @@ PrefabInstance:
       propertyPath: m_Interpolate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8548830867455329445, guid: e14f56351d0542245809af82ec6b911f,
+        type: 3}
+      propertyPath: childFlipper
+      value: 
+      objectReference: {fileID: 1590027077}
     m_RemovedComponents:
     - {fileID: 4966516559004579570, guid: e14f56351d0542245809af82ec6b911f, type: 3}
     - {fileID: 4966516559004579571, guid: e14f56351d0542245809af82ec6b911f, type: 3}
@@ -4782,6 +4813,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3895979512148140934, guid: 0cc98514608ef8f42a28bcf562c625a3,
+        type: 3}
+      propertyPath: childFlipper
+      value: 
+      objectReference: {fileID: 49448097}
     - target: {fileID: 3895979511066297686, guid: 0cc98514608ef8f42a28bcf562c625a3,
         type: 3}
       propertyPath: m_Sprite
