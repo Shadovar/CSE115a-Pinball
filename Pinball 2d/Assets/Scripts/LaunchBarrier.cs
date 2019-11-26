@@ -9,13 +9,14 @@ public class LaunchBarrier : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        collider.enabled = true;
+        collider.isTrigger = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        collider.enabled = true;
+
     }
     private void OnTriggerExit2D(Collider2D col)
     {
