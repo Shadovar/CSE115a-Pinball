@@ -2,23 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaunchBarrier : MonoBehaviour
+public class LaunchGate : MonoBehaviour
 {
-    public BoxCollider2D collider;
-    public Rigidbody2D rigidbody;
+    public LaunchTrigger gateTrigger; // A collider which triggers when the ball passes through the gate
+    public Rigidbody2D rigidBody;
+
     // Start is called before the first frame update
     void Start()
     {
-        collider.enabled = true;
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-    }
-    private void OnTriggerExit2D(Collider2D col)
-    {
-        Debug.Log("exited");
     }
 }

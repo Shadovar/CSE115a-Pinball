@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\LaunchGate.cs" />
+    <Compile Include="Assets\LaunchTrigger.cs" />
     <Compile Include="Assets\Scripts\BallFlipperCollision.cs" />
     <Compile Include="Assets\Scripts\DontClipThroughStuff.cs" />
     <Compile Include="Assets\Scripts\FlipperDisableTrigger.cs" />

@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class LauncherSpring : MonoBehaviour
 {
-    public LaunchBarrier barrier;              // Barrier preventing ball from going "inside" the spring
-    public KeyCode launchCode = KeyCode.Space; // Key the user uses to launch the labb
-    public Vector3 launchPos;                  // Position which the ball is launched from
-    public pinballScript newBall;              // The "static" refrence to the ball
-    public AudioClip springSound;              // Sound of the spring
-    public AudioSource springSource;           // AudioSource for the spring sound
-    private Vector2 currentSpringPos;          // Position of the launchPad of the spring.
-    private int numFramesHeld = 0;             // Number of fromes which launch key is held down
-    int MaxNumFramesHold = 30 * 3;             // Max number of fromes which launch key is held down
-    float springHeight;                        // Calculated height of the spring
+    public LaunchGate gate;                     // Gate to prevent ball from re-entering launch area
+    public LaunchBarrier barrier;               // Barrier preventing ball from going "inside" the spring
+    public KeyCode launchCode = KeyCode.Space;  // Key the user uses to launch the labb
+    public Vector3 launchPos;                   // Position which the ball is launched from
+    public pinballScript newBall;               // The "static" refrence to the ball
+    public AudioClip springSound;               // Sound of the spring
+    public AudioSource springSource;            // AudioSource for the spring sound
+    private Vector2 currentSpringPos;           // Position of the launchPad of the spring.
+    private int numFramesHeld = 0;              // Number of fromes which launch key is held down
+    int MaxNumFramesHold = 30 * 3;              // Max number of fromes which launch key is held down
+    float springHeight;                         // Calculated height of the spring
+    public static bool userIsLaunching = false; // Is the user currently holding the launch key?
 
     // Start is called before the first frame update
     void Start()
@@ -23,20 +25,23 @@ public class LauncherSpring : MonoBehaviour
         currentSpringPos = new Vector2(launchPos.x, launchPos.y);
         springHeight = transform.localScale.y * 0.5f;
         springSource.clip = springSound;
+        userIsLaunching = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         newBall.startPos = launchPos;
-        if (Input.GetKeyDown(launchCode) || Input.GetKey(launchCode) || Input.GetKeyUp(launchCode))
+        userIsLaunching = Input.GetKeyDown(launchCode) || Input.GetKey(launchCode) || Input.GetKeyUp(launchCode);
+        if (userIsLaunching)
         {
-            // The user is holding (ow just released) the launch key
+            // The user is holding (or just released) the launch key
             newBall.rigidBall.position = new Vector3(currentSpringPos.x, currentSpringPos.y - 1.5f);
             newBall.rigidBall.velocity = new Vector2(0, 0);
             newBall.rigidBall.inertia = 0.0f;
             newBall.rigidBall.angularVelocity = 0;
             newBall.rigidBall.SetRotation(0);
+            gate.GetComponent<Rigidbody2D>().simulated = false;
         }
 
         if (Input.GetKeyDown(launchCode))
