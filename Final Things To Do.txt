@@ -1,0 +1,28 @@
+Things I will work on over break:
+1) Spring sound effect
+2) Make a better version of the board
+
+Austin:
+1) Look at Unit Tests
+2) Fix other bugs (looking into the paddles, including restart)
+3) Ball Lost sound effect
+
+Jordan:
+1) No hitting space bar during play
+2) Restriction on tilt
+3) Bug Report
+4) Manual Test Document (with Zihan)
+
+Zihan:
+1) Documents
+2) Add more to slides
+
+Carl:
+1) Clean up code
+2) Camera shake on tilt input
+3) User input for high score name
+4) Particle effects
+
+
+Everyone:
+Final check on documents and slides to make sure everything needed is there.
