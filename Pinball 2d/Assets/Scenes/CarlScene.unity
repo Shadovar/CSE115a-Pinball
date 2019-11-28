@@ -3581,16 +3581,6 @@ PrefabInstance:
       propertyPath: gate
       value: 
       objectReference: {fileID: 620800471}
-    - target: {fileID: 4023882754919474572, guid: 02da28df8024a544ea98301f4be79751,
-        type: 3}
-      propertyPath: m_TagString
-      value: Launcher
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023882754919474572, guid: 02da28df8024a544ea98301f4be79751,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 6419389273031893943, guid: 02da28df8024a544ea98301f4be79751,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3645,6 +3635,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023882754919474572, guid: 02da28df8024a544ea98301f4be79751,
+        type: 3}
+      propertyPath: m_TagString
+      value: Launcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023882754919474572, guid: 02da28df8024a544ea98301f4be79751,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4023882754605269365, guid: 02da28df8024a544ea98301f4be79751,
         type: 3}
@@ -3798,7 +3798,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1113357239}
-        m_MethodName: Resume
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4480,16 +4480,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Flipper
       objectReference: {fileID: 0}
-    - target: {fileID: 8548830867455329445, guid: e14f56351d0542245809af82ec6b911f,
-        type: 3}
-      propertyPath: childFlipper
-      value: 
-      objectReference: {fileID: 1590027077}
-    - target: {fileID: 2374425156748466768, guid: e14f56351d0542245809af82ec6b911f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Flipper
-      objectReference: {fileID: 0}
     - target: {fileID: 1844975835666318019, guid: e14f56351d0542245809af82ec6b911f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4545,6 +4535,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 330
       objectReference: {fileID: 0}
+    - target: {fileID: 2374425157813599365, guid: e14f56351d0542245809af82ec6b911f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Flipper
+      objectReference: {fileID: 0}
     - target: {fileID: 2374425156748466771, guid: e14f56351d0542245809af82ec6b911f,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -4555,11 +4550,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1.8
       objectReference: {fileID: 0}
-    - target: {fileID: 2374425157813599365, guid: e14f56351d0542245809af82ec6b911f,
+    - target: {fileID: 2374425156748466768, guid: e14f56351d0542245809af82ec6b911f,
         type: 3}
       propertyPath: m_TagString
       value: Flipper
       objectReference: {fileID: 0}
+    - target: {fileID: 8548830867455329445, guid: e14f56351d0542245809af82ec6b911f,
+        type: 3}
+      propertyPath: childFlipper
+      value: 
+      objectReference: {fileID: 1590027077}
     - target: {fileID: 2374425156748466772, guid: e14f56351d0542245809af82ec6b911f,
         type: 3}
       propertyPath: m_Sprite
@@ -4592,21 +4592,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Flipper
       objectReference: {fileID: 0}
-    - target: {fileID: 3895979511066297682, guid: 0cc98514608ef8f42a28bcf562c625a3,
-        type: 3}
-      propertyPath: m_TagString
-      value: Flipper
-      objectReference: {fileID: 0}
-    - target: {fileID: 3895979512148140934, guid: 0cc98514608ef8f42a28bcf562c625a3,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3895979512148140934, guid: 0cc98514608ef8f42a28bcf562c625a3,
-        type: 3}
-      propertyPath: childFlipper
-      value: 
-      objectReference: {fileID: 49448097}
     - target: {fileID: 8131510630854007642, guid: 0cc98514608ef8f42a28bcf562c625a3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4662,6 +4647,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3895979512148140935, guid: 0cc98514608ef8f42a28bcf562c625a3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Flipper
+      objectReference: {fileID: 0}
     - target: {fileID: 3895979511066297681, guid: 0cc98514608ef8f42a28bcf562c625a3,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -4672,11 +4662,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1.8
       objectReference: {fileID: 0}
-    - target: {fileID: 3895979512148140935, guid: 0cc98514608ef8f42a28bcf562c625a3,
+    - target: {fileID: 3895979511066297682, guid: 0cc98514608ef8f42a28bcf562c625a3,
         type: 3}
       propertyPath: m_TagString
       value: Flipper
       objectReference: {fileID: 0}
+    - target: {fileID: 3895979512148140934, guid: 0cc98514608ef8f42a28bcf562c625a3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895979512148140934, guid: 0cc98514608ef8f42a28bcf562c625a3,
+        type: 3}
+      propertyPath: childFlipper
+      value: 
+      objectReference: {fileID: 49448097}
     - target: {fileID: 3895979511066297686, guid: 0cc98514608ef8f42a28bcf562c625a3,
         type: 3}
       propertyPath: m_Sprite

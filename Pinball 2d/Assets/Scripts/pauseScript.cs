@@ -45,6 +45,15 @@ public class pauseScript : MonoBehaviour
         RightFlipperScript.rightChangePauseState();
     }
 
+    public void Restart()
+    {
+        pauseMenu.SetActive(false);
+        paused = false;
+        ball.gravityScale = holdBallGravity;
+        leftFlipperScript.leftChangePauseState();
+        RightFlipperScript.rightChangePauseState();
+    }
+
     public void Pause()
     {
         pauseMenu.SetActive(true);
