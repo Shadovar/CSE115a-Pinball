@@ -16,6 +16,7 @@ public class LauncherSpring : MonoBehaviour
     int MaxNumFramesHold = 30 * 3;              // Max number of fromes which launch key is held down
     float springHeight;                         // Calculated height of the spring
     public static bool userIsLaunching = false; // Is the user currently holding the launch key?
+    public static bool userCanLaunch = true;    // Can the user launch the ball?
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,9 @@ public class LauncherSpring : MonoBehaviour
     void Update()
     {
         newBall.startPos = launchPos;
+        if (!userCanLaunch) // If the user can't launch, dont need to do ANYTHING.
+            return;
+
         userIsLaunching = Input.GetKeyDown(launchCode) || Input.GetKey(launchCode) || Input.GetKeyUp(launchCode);
         if (userIsLaunching)
         {

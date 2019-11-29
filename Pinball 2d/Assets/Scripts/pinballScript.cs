@@ -58,6 +58,7 @@ public class pinballScript : MonoBehaviour
             bonus1 = 0;
             transform.position = startPos;
             rigidBall.velocity = new Vector2(0, 0);
+            LauncherSpring.userCanLaunch = true;
         }
         // bonus points
         if (collision.transform.name == "Bonus1")

@@ -20,6 +20,7 @@ public class LaunchTrigger : MonoBehaviour
     {
         Debug.Log("exited");
         gate.rigidBody.simulated = true;
+        LauncherSpring.userCanLaunch = false;
         //gate.rigidbody.simulated = true;
     }
 }
