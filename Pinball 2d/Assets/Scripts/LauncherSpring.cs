@@ -29,6 +29,7 @@ public class LauncherSpring : MonoBehaviour
         userIsLaunching = false;
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -45,7 +46,7 @@ public class LauncherSpring : MonoBehaviour
             newBall.rigidBall.inertia = 0.0f;
             newBall.rigidBall.angularVelocity = 0;
             newBall.rigidBall.SetRotation(0);
-            gate.GetComponent<Rigidbody2D>().simulated = false;
+            barrier.rigidbody.simulated = true;
         }
 
         if (Input.GetKeyDown(launchCode))
@@ -54,6 +55,7 @@ public class LauncherSpring : MonoBehaviour
             barrier.rigidbody.simulated = false;
             currentSpringPos = launchPos;
             numFramesHeld = 0;
+            gate.rigidBody.simulated = false;
         }
         else if (Input.GetKey(launchCode))
         {
@@ -79,6 +81,13 @@ public class LauncherSpring : MonoBehaviour
 
     public void restartGame()
     {
-        newBall.rigidBall.position = new Vector3(launchPos.x, launchPos.y + 5);
+        newBall.rigidBall.position = new Vector3(launchPos.x, launchPos.y + 0.0f);
+        userCanLaunch = true;
+        newBall.rigidBall.velocity = new Vector2(0, 0);
+        newBall.rigidBall.inertia = 0.0f;
+        newBall.rigidBall.angularVelocity = 0;
+        newBall.rigidBall.SetRotation(0);
+        barrier.rigidbody.simulated = true;
+        gate.rigidBody.simulated = false;
     }
 }

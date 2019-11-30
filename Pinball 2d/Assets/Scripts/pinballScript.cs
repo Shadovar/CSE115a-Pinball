@@ -6,6 +6,7 @@ public class pinballScript : MonoBehaviour
 {
 
     public Rigidbody2D rigidBall;
+    public LauncherSpring launcher;
     public Vector3 startPos;
     public AudioClip hitWallSound;
     public AudioSource hitWallSource;
@@ -56,9 +57,7 @@ public class pinballScript : MonoBehaviour
             ScoreControl.scorevalue = 0;
             bonustracker = 0;
             bonus1 = 0;
-            transform.position = startPos;
-            rigidBall.velocity = new Vector2(0, 0);
-            LauncherSpring.userCanLaunch = true;
+            launcher.restartGame();
         }
         // bonus points
         if (collision.transform.name == "Bonus1")

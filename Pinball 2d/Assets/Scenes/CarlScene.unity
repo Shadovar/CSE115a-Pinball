@@ -1593,6 +1593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBall: {fileID: 793400173}
+  launcher: {fileID: 1644833631}
   startPos: {x: 1.03, y: 2.98, z: 0}
   hitWallSound: {fileID: 8300000, guid: dcd0f65e2b26bd54aa9ccc83f73b4f42, type: 3}
   hitWallSource: {fileID: 793400179}
@@ -1919,6 +1920,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &993790686 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4023882754334802618, guid: 02da28df8024a544ea98301f4be79751,
+    type: 3}
+  m_PrefabInstance: {fileID: 1944342043}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa88479132a1445429d9a5b71d32f6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1052765569
 GameObject:
   m_ObjectHideFlags: 0
@@ -2304,6 +2317,7 @@ MonoBehaviour:
   ball: {fileID: 793400173}
   leftFlipperScript: {fileID: 1383560831}
   RightFlipperScript: {fileID: 1501028163}
+  launcher: {fileID: 1644833631}
 --- !u!114 &1113357240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2878,21 +2892,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251853010}
   m_CullTransparentMesh: 0
---- !u!114 &1369029404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4023882754334802618, guid: 02da28df8024a544ea98301f4be79751,
-    type: 3}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa88479132a1445429d9a5b71d32f6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collider: {fileID: 0}
-  rigidbody: {fileID: 0}
 --- !u!114 &1383560831 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8548830867455329445, guid: e14f56351d0542245809af82ec6b911f,
@@ -3431,10 +3430,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gate: {fileID: 0}
-  barrier: {fileID: 1369029404}
+  barrier: {fileID: 0}
   launchCode: 32
   launchPos: {x: 0, y: 0, z: 0}
-  newBall: {fileID: 793400176}
+  newBall: {fileID: 0}
   springSound: {fileID: 0}
   springSource: {fileID: 0}
 --- !u!1 &1877493610
@@ -3679,6 +3678,11 @@ PrefabInstance:
       propertyPath: gate
       value: 
       objectReference: {fileID: 620800471}
+    - target: {fileID: 4023882754919479923, guid: 02da28df8024a544ea98301f4be79751,
+        type: 3}
+      propertyPath: barrier
+      value: 
+      objectReference: {fileID: 993790686}
     - target: {fileID: 6419389273031893943, guid: 02da28df8024a544ea98301f4be79751,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -11,6 +11,7 @@ public class pauseScript : MonoBehaviour
     float holdBallGravity;
     public leftFlipper leftFlipperScript;
     public rightFlipper RightFlipperScript;
+    public LauncherSpring launcher;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +53,7 @@ public class pauseScript : MonoBehaviour
         ball.gravityScale = holdBallGravity;
         leftFlipperScript.leftChangePauseState();
         RightFlipperScript.rightChangePauseState();
+        launcher.restartGame();
     }
 
     public void Pause()
