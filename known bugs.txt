@@ -1,0 +1,15 @@
+It is possible to re-launch the ball after it has been launched, but before the ball passes through the "gate" (the red barrier at top of launcher region) barrier.
+This cannot provide any game-abuse or exploit mechanism and is only an odd effect.
+
+If a flipper is held up, and the ball becomes stuck between the flipper and the red triangle, the ball will repeatedly shake / bounce between
+these two things, causing the score to perpetually increase.This can be used as an exploit to gain score.
+
+The left & right tilt functionality works even if the game is paused. The ball will react to the tile,
+and continue to move around in an extremely "floaty" state. This can potentially be used as an exploit to gain score.
+
+If the game is paused while the launcher (space) is being held down, the game will continue to operate with the ball having an extremely "floaty" effect.
+This can potentially be used as an exploit to gain score.
+
+It is possibly to put false values in the score file. The file is unencrypted, so anything can be changed. This can allow the user to create fake score values,
+or even corrupt the file (invalid username, invalid score value, etc), causing all scores to fail to load (the game will still run and log these error, just with undefined behavior).
+
