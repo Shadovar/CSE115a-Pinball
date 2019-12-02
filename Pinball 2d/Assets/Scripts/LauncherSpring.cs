@@ -46,13 +46,13 @@ public class LauncherSpring : MonoBehaviour
             newBall.rigidBall.inertia = 0.0f;
             newBall.rigidBall.angularVelocity = 0;
             newBall.rigidBall.SetRotation(0);
-            barrier.rigidbody.simulated = true;
+            barrier.rigidbody2D.simulated = true;
         }
 
         if (Input.GetKeyDown(launchCode))
         {
             // The user just pressed the launch key
-            barrier.rigidbody.simulated = false;
+            barrier.rigidbody2D.simulated = false;
             currentSpringPos = launchPos;
             numFramesHeld = 0;
             gate.rigidBody.simulated = false;
@@ -70,7 +70,7 @@ public class LauncherSpring : MonoBehaviour
             newBall.rigidBall.AddForce(new Vector2(0.0f, applyForce), ForceMode2D.Impulse);
             Debug.Log("Launch Intensity: " + applyForce);
             numFramesHeld = 0;
-            barrier.rigidbody.simulated = true;
+            barrier.rigidbody2D.simulated = true;
             springSource.Play();
         }
 
@@ -87,7 +87,7 @@ public class LauncherSpring : MonoBehaviour
         newBall.rigidBall.inertia = 0.0f;
         newBall.rigidBall.angularVelocity = 0;
         newBall.rigidBall.SetRotation(0);
-        barrier.rigidbody.simulated = true;
+        barrier.rigidbody2D.simulated = true;
         gate.rigidBody.simulated = false;
     }
 }

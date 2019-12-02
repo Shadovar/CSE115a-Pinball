@@ -4,26 +4,19 @@ using UnityEngine;
 
 public class BallFlipperCollision : MonoBehaviour
 {
+    //References to gameObject fields
     public Rigidbody2D rb2d;
+
+    //Constants
     private float thrust = 50f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        //rb2d = gameObject.GetComponent<Rigidbody2D>();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //Upon entering the collider of another object
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //if it collided with a flipper
         if(other.gameObject.CompareTag("Flipper"))
         {
-            Debug.Log("BallFlipperCollision: Of type flipper");
-            Debug.Log("BallFlipperCollision: Name of object is " + gameObject.transform.name);
+            //add an upward force
             rb2d.AddForce(Vector2.up * thrust, ForceMode2D.Impulse);
         }
     }

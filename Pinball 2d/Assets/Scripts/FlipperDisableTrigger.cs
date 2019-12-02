@@ -4,37 +4,30 @@ using UnityEngine;
 
 public class FlipperDisableTrigger : MonoBehaviour
 {
+
+    //References to gameObject fields
     public PolygonCollider2D polygonCollider2D;
-    private bool colliderEnabled = false;
-    private bool colliderStateChanged = false;
+
+    //Field caching current state
+    private bool colliderEnabled;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        //As flipper starts at rest, start with collider disabled
         polygonCollider2D.enabled = false;
+        colliderEnabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(colliderStateChanged && colliderEnabled)
-        {
-            polygonCollider2D.enabled = true;
-            colliderStateChanged = false;
-        }
-        else if(colliderStateChanged && !colliderEnabled)
-        {
-            polygonCollider2D.enabled = false;
-            colliderStateChanged = false;
-        }
-    }
-
+    // ChangeColliderState is called when parent messages that the collider should be either enabled or disabled
     void ChangeColliderState(bool isEnabled)
     {
+        // If the newly requested state differs from the current state, change the current state
         if (colliderEnabled != isEnabled)
         {
-            Debug.Log("FlipperDisableTrigger: ChangeColliderState called w/ different input");
+            polygonCollider2D.enabled = isEnabled;
             colliderEnabled = isEnabled;
-            colliderStateChanged = true;
         }
     }
 }

@@ -4,21 +4,12 @@ using UnityEngine;
 
 public class LaunchBarrier : MonoBehaviour
 {
-    public BoxCollider2D collider;
-    public Rigidbody2D rigidbody;
+    // References to gameObject fields
+    public Rigidbody2D rigidbody2D;
+
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        collider.enabled = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-    private void OnTriggerExit2D(Collider2D col)
-    {
-        Debug.Log("exited");
+        rigidbody2D = gameObject.GetComponent<Rigidbody2D>();  
     }
 }

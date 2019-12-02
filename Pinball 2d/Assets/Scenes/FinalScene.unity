@@ -1353,7 +1353,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sendTriggerMessage: 0
+  layerMask: 1024
   skinWidth: 0.1
+  minimumExtent: 0
+  partialExtent: 0
+  sqrMinimumExtent: 0
+  previousPosition: {x: 0, y: 0}
+  rb2d: {fileID: 0}
+  collider2d: {fileID: 0}
 --- !u!114 &793400181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1532,6 +1539,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &911308759 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 4023882754334802616, guid: 02da28df8024a544ea98301f4be79751,
+    type: 3}
+  m_PrefabInstance: {fileID: 1944342043}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &993790686 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4023882754334802618, guid: 02da28df8024a544ea98301f4be79751,
@@ -3757,6 +3770,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4023882754334802618, guid: 02da28df8024a544ea98301f4be79751,
+        type: 3}
+      propertyPath: rigidbody2D
+      value: 
+      objectReference: {fileID: 911308759}
     - target: {fileID: 4023882754919479923, guid: 02da28df8024a544ea98301f4be79751,
         type: 3}
       propertyPath: newBall
