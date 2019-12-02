@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class LauncherSpring : MonoBehaviour
 {
+    // References to gameObject fields
     public LaunchGate gate;                     // Gate to prevent ball from re-entering launch area
     public LaunchBarrier barrier;               // Barrier preventing ball from going "inside" the spring
-    public KeyCode launchCode = KeyCode.Space;  // Key the user uses to launch the labb
-    public Vector3 launchPos;                   // Position which the ball is launched from
     public pinballScript newBall;               // The "static" refrence to the ball
     public AudioClip springSound;               // Sound of the spring
     public AudioSource springSource;            // AudioSource for the spring sound
+
+    // References to constants
+    public KeyCode launchCode = KeyCode.Space;  // Key the user uses to launch the labb
+    public Vector3 launchPos;                   // Position which the ball is launched from
     private Vector2 currentSpringPos;           // Position of the launchPad of the spring.
     private int numFramesHeld = 0;              // Number of fromes which launch key is held down
     int MaxNumFramesHold = 30 * 3;              // Max number of fromes which launch key is held down
@@ -21,21 +24,25 @@ public class LauncherSpring : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Initialize fields
         launchPos = transform.position;
+
         launchPos.y += transform.localScale.y * 1;
         currentSpringPos = new Vector2(launchPos.x, launchPos.y);
         springHeight = transform.localScale.y * 0.5f;
         springSource.clip = springSound;
-        userIsLaunching = false;
+        newBall.startPos = launchPos;
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        newBall.startPos = launchPos;
-        if (!userCanLaunch) // If the user can't launch, dont need to do ANYTHING.
+        // If the user can't launch, dont need to do anything
+        if (!userCanLaunch)
+        {
             return;
+        }
 
         userIsLaunching = Input.GetKeyDown(launchCode) || Input.GetKey(launchCode) || Input.GetKeyUp(launchCode);
         if (userIsLaunching)
@@ -55,7 +62,7 @@ public class LauncherSpring : MonoBehaviour
             barrier.rigidbody2D.simulated = false;
             currentSpringPos = launchPos;
             numFramesHeld = 0;
-            gate.rigidBody.simulated = false;
+            gate.rigidbody2D.simulated = false;
         }
         else if (Input.GetKey(launchCode))
         {
@@ -79,6 +86,7 @@ public class LauncherSpring : MonoBehaviour
         transform.position = new Vector3(currentSpringPos.x, currentSpringPos.y - 2.0f);
     }
 
+    // Resets the functionality of the launcher
     public void restartGame()
     {
         newBall.rigidBall.position = new Vector3(launchPos.x, launchPos.y + 0.0f);
@@ -88,6 +96,12 @@ public class LauncherSpring : MonoBehaviour
         newBall.rigidBall.angularVelocity = 0;
         newBall.rigidBall.SetRotation(0);
         barrier.rigidbody2D.simulated = true;
-        gate.rigidBody.simulated = false;
+        gate.rigidbody2D.simulated = false;
+    }
+
+    // When the gate registers that the ball has passed it, disable launch capabilities
+    public void UserCantLaunch()
+    {
+        userCanLaunch = false;
     }
 }

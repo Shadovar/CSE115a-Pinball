@@ -4,23 +4,15 @@ using UnityEngine;
 
 public class LaunchTrigger : MonoBehaviour
 {
-    public LaunchGate gate; // The physical gate object, not the trigger (this)
-    // Start is called before the first frame update
-    void Start()
-    {
+    // Reference to other gameObjects
+    public LaunchGate launcherGate; // The physical gate object, not the trigger (this)
+    public GameObject launcherSpring;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    // OnTriggerExit2D is called when a collider exits this gameObject's collider
     private void OnTriggerExit2D(Collider2D col)
     {
-        Debug.Log("exited");
-        gate.rigidBody.simulated = true;
-        LauncherSpring.userCanLaunch = false;
-        //gate.rigidbody.simulated = true;
+        //Ensure that the launch area doesn't interfere with play
+        launcherGate.rigidbody2D.simulated = true;
+        launcherSpring.SendMessage("UserCantLaunch");
     }
 }

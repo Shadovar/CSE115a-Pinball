@@ -501,7 +501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f43374faa7d9c4590babfd1dc75925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gate: {fileID: 620800471}
+  launcherGate: {fileID: 620800471}
+  launcherSpring: {fileID: 2017030383}
 --- !u!61 &417630656
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -921,7 +922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gateTrigger: {fileID: 417630655}
-  rigidBody: {fileID: 620800469}
+  rigidbody2D: {fileID: 0}
 --- !u!1 &635364921
 GameObject:
   m_ObjectHideFlags: 0
