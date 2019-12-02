@@ -6,6 +6,7 @@ public class TableTilt : MonoBehaviour
 {
     // References to gameObject fields
     public Rigidbody2D rigidbody2d;
+    public GameObject camera;
 
     // References to constant fields
     public float minInterval = 0.5f;
@@ -38,11 +39,13 @@ public class TableTilt : MonoBehaviour
             {
                 rigidbody2d.AddForce(new Vector2(-1, Random.Range(-yRange, yRange)) * Random.Range(forceMin, forceMax));
                 timeLastTilt = Time.realtimeSinceStartup;
+                camera.SendMessage("ShakeForDuration", .5f);
             }
             if (Input.GetKeyDown(RightTiltInput))
             {
                 rigidbody2d.AddForce(new Vector2(1, Random.Range(-yRange, yRange)) * Random.Range(forceMin, forceMax));
                 timeLastTilt = Time.realtimeSinceStartup;
+                camera.SendMessage("ShakeForDuration", .5f);
             }
         }
     }
