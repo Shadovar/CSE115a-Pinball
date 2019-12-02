@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class pauseScript : MonoBehaviour
 {
-    public static bool paused = false;
+
+    // References to gameObject fields
     public GameObject pauseMenu;
-    public Rigidbody2D ball;
-    Vector3 holdBallVelocity;
-    float holdBallGravity;
+    public Rigidbody2D ball;   
     public leftFlipper leftFlipperScript;
     public rightFlipper RightFlipperScript;
     public LauncherSpring launcher;
+
+    // References to primitive fields
+    public static bool paused = false;
+    Vector3 holdBallVelocity;
+    float holdBallGravity;
+    KeyCode PauseKey = KeyCode.P;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +28,9 @@ public class pauseScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P))
+        if(Input.GetKeyDown(PauseKey))
         {
-            Debug.Log("pressed");
+            
             if (paused)
             {
                 Resume();
@@ -36,6 +42,7 @@ public class pauseScript : MonoBehaviour
         }
     }
 
+    // Called when pause is ended, allowing resumption of normal Update procedure
     public void Resume()
     {
         pauseMenu.SetActive(false);
@@ -46,6 +53,7 @@ public class pauseScript : MonoBehaviour
         RightFlipperScript.rightChangePauseState();
     }
 
+    // Called when a restart is requested, restart game
     public void Restart()
     {
         pauseMenu.SetActive(false);
@@ -56,6 +64,7 @@ public class pauseScript : MonoBehaviour
         launcher.restartGame();
     }
 
+    // Called when a pause is requested, forcing normal update functionality to no longer work
     public void Pause()
     {
         pauseMenu.SetActive(true);
@@ -68,9 +77,9 @@ public class pauseScript : MonoBehaviour
         RightFlipperScript.rightChangePauseState();
     }
 
+    // Called when exiting the game is desired, exiting the game
     public void exitGame()
     {
-        Debug.Log("quitting");
         ScoreControl.CommitScore("User");
         ScoreControl.Save();
         Application.Quit();

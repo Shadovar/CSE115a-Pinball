@@ -4,30 +4,27 @@ using UnityEngine;
 
 public class leftFlipper : MonoBehaviour
 {
-    float leftMaxRot = 35; //default value: 35
-    float leftRestingRot = 330; //default value: 330
-    float upSpeed = 18; //default 18
-    float downSpeed = -8; //default -8
+    // References to gameObject fields
     public AudioClip leftFlipperSound;
     public AudioSource leftFlipperSource;
-    public KeyCode LeftFlipperKey = KeyCode.Z;
     public GameObject childFlipper;
+    
+    // References for constant fields
+    float leftMaxRot = 35;
+    float leftRestingRot = 330;
+    float upSpeed = 18;
+    float downSpeed = -8;
     public bool paused = false;
-    //Sets inputs for the left flipper
-   
+    public KeyCode LeftFlipperKey = KeyCode.Z;
+ 
     // Start is called before the first frame update
     void Start()
     {
         leftFlipperSource.clip = leftFlipperSound;   
     }
 
-    public void leftChangePauseState()
-    {
-        paused = !paused;
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
+    // Update us called once per frame
+    private void Update()
     {
         if (!paused)
         {
@@ -35,13 +32,22 @@ public class leftFlipper : MonoBehaviour
             {
                 leftFlipperSource.Play();
             }
+        }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if (!paused)
+        {
             if (Input.GetKey(LeftFlipperKey))
             {
                 //if it hasn't reached its maximum
-                if (transform.eulerAngles.z <= leftMaxRot || transform.eulerAngles.z >= 300)
+                if (LessThanMaxRotation())
                 {
                     transform.Rotate(new Vector3(0, 0, upSpeed));
-                    //Tell child flipper to be able to push ball up
+
+                    //Tell child flipper to be able to provide upward momentum to ball
                     childFlipper.gameObject.SendMessage("ChangeColliderState", true);
                 }
                 else
@@ -53,20 +59,34 @@ public class leftFlipper : MonoBehaviour
             else
             {
                 //if it hasn't reached its base
-                //a range is being checked !(322, 330) because the left flipper has to go between 30 and 330 degrees
-                if (transform.eulerAngles.z <= (leftRestingRot + downSpeed - 1)
-                     || transform.eulerAngles.z >= leftRestingRot)
+                if (NotRestingRotation())
                 {
-                    //Debug.Log(transform.eulerAngles.z + " < " + (leftRestingRot + downSpeed - 1) + " || > " + leftRestingRot);
                     transform.Rotate(new Vector3(0, 0, downSpeed));
+
                     //Tell child flipper to no longer provide upward momentum to ball
                     childFlipper.gameObject.SendMessage("ChangeColliderState", false);
                 }
-                //else
-                //{
-                //    Debug.Log("Left at base");
-                //}
             }
         }
+    }
+
+    //Disable flipper when paused
+    public void leftChangePauseState()
+    {
+        paused = !paused;
+    }
+
+    //Check if the flipper is at less than maximum rotation
+    bool LessThanMaxRotation()
+    {
+        // A range is being checked because it goes from 359 degrees to 1 degree when rotating
+        return transform.eulerAngles.z <= leftMaxRot || transform.eulerAngles.z >= (leftRestingRot + 2 * downSpeed);
+    }
+
+    // Check if the flipper has fully returned to its resting position
+    bool NotRestingRotation()
+    {
+        // A range is being checked because it goes from 1 degree to 359 degrees when rotating
+        return transform.eulerAngles.z <= (leftRestingRot + downSpeed - 1) || transform.eulerAngles.z >= leftRestingRot;
     }
 }
