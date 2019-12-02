@@ -12,10 +12,12 @@ public class pinballScript : MonoBehaviour
     public AudioSource hitWallSource;
     private float forceFromFlipper = 50f;
 	public bool[] bonusStates;
+	public GameObject[] indicatorLights;
     // Start is called before the first frame update
 	void resetBonusStates(){
 		for (int i=0; i<3; i++){
 			bonusStates[i]=false;
+            indicatorLights[i].GetComponent<SpriteRenderer>().color = Color.red;
 		}
 	}
 	
@@ -32,7 +34,7 @@ public class pinballScript : MonoBehaviour
     void Start()
     {
         hitWallSource.clip = hitWallSound;
-		bonusStates = new bool[3];
+		bonusStates = new bool[3];		
 		resetBonusStates();
     }
 
@@ -80,13 +82,15 @@ public class pinballScript : MonoBehaviour
 			
 			if (bonusStates[whichBonus]==false){
 				bonusStates[whichBonus]=true;
-				if (checkBonus()){
+                indicatorLights[whichBonus].GetComponent<SpriteRenderer>().color = Color.green;
+                if (checkBonus()){
 					ScoreControl.scorevalue += 100;
 					resetBonusStates();
 				}
 			}
 			else {
 				bonusStates[whichBonus]=false;
+				indicatorLights[whichBonus].GetComponent<SpriteRenderer>().color = Color.red;
 			}
             Debug.Log(collision.transform.name + bonusStates[whichBonus]);
         }
