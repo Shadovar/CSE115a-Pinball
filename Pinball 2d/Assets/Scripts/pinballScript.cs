@@ -10,15 +10,30 @@ public class pinballScript : MonoBehaviour
     public Vector3 startPos;
     public AudioClip hitWallSound;
     public AudioSource hitWallSource;
-    public int bonustracker = 0;
     private float forceFromFlipper = 50f;
-    public int bonus1 = 0;
-    public int bonus2 = 0;
-    public int bonus3 = 0;
+	public bool[] bonusStates;
     // Start is called before the first frame update
+	void resetBonusStates(){
+		for (int i=0; i<3; i++){
+			bonusStates[i]=false;
+		}
+	}
+	
+	bool checkBonus(){
+		for (int i=0; i<3; i++){
+			if (bonusStates[i]==false){
+				return false;
+			}
+		}
+		return true;
+	}
+		
+	
     void Start()
     {
         hitWallSource.clip = hitWallSound;
+		bonusStates = new bool[3];
+		resetBonusStates();
     }
 
     // Update is called once per frame
@@ -55,73 +70,25 @@ public class pinballScript : MonoBehaviour
         if (collision.transform.name == "YouLose")
         {
             ScoreControl.scorevalue = 0;
-            bonustracker = 0;
-            bonus1 = 0;
+            resetBonusStates();
             launcher.restartGame();
         }
         // bonus points
-        if (collision.transform.name == "Bonus1")
+        if (collision.transform.name.StartsWith("Bonus"))
         {
-            bonustracker += 1;
-            //int bonus1 = 0;
-			if (bonus1==0)
-			{
-				bonus1=1;
+			int whichBonus = collision.transform.name[5] - '1';
+			
+			if (bonusStates[whichBonus]==false){
+				bonusStates[whichBonus]=true;
+				if (checkBonus()){
+					ScoreControl.scorevalue += 100;
+					resetBonusStates();
+				}
 			}
 			else {
-				bonus1=0;
+				bonusStates[whichBonus]=false;
 			}
-            Debug.Log("bonus1: "+ bonus1);
-            if (bonustracker >= 3 && bonus1 == 1)
-            {
-                ScoreControl.scorevalue += 100;
-                bonustracker = 0;
-                bonus1 = 0;
-				bonus2 = 0;
-				bonus3 = 0;
-            }
-        }
-        if (collision.transform.name == "Bonus2")
-        {
-            bonustracker += 1;
-            //int bonus2 = 0;
-            if (bonus2==0)
-			{
-				bonus2=1;
-			}
-			else {
-				bonus2=0;
-			}
-            Debug.Log("bonus2: " + bonus2);
-            if (bonustracker >= 3 && bonus2 == 1)
-            {
-                ScoreControl.scorevalue += 100;
-                bonustracker = 0;
-                bonus1 = 0;
-				bonus2 = 0;
-				bonus3 = 0;
-            }
-        }
-        if (collision.transform.name == "Bonus3")
-        {
-            bonustracker += 1;
-            //int bonus3 = 0;
-            if (bonus3==0)
-			{
-				bonus3=1;
-			}
-			else {
-				bonus3=0;
-			}
-            Debug.Log("bonus3: " + bonus3);
-            if (bonustracker >= 3 && bonus3 == 1)
-            {
-                ScoreControl.scorevalue += 100;
-                bonustracker = 0;
-                bonus1 = 0;
-				bonus2 = 0;
-				bonus3 = 0;
-            }
+            Debug.Log(collision.transform.name + bonusStates[whichBonus]);
         }
     }
 
