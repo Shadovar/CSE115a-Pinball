@@ -64,39 +64,63 @@ public class pinballScript : MonoBehaviour
         {
             bonustracker += 1;
             //int bonus1 = 0;
-            bonus1++;
+			if (bonus1==0)
+			{
+				bonus1=1;
+			}
+			else {
+				bonus1=0;
+			}
             Debug.Log("bonus1: "+ bonus1);
             if (bonustracker >= 3 && bonus1 == 1)
             {
                 ScoreControl.scorevalue += 100;
                 bonustracker = 0;
                 bonus1 = 0;
+				bonus2 = 0;
+				bonus3 = 0;
             }
         }
         if (collision.transform.name == "Bonus2")
         {
             bonustracker += 1;
             //int bonus2 = 0;
-            bonus2++;
+            if (bonus2==0)
+			{
+				bonus2=1;
+			}
+			else {
+				bonus2=0;
+			}
             Debug.Log("bonus2: " + bonus2);
             if (bonustracker >= 3 && bonus2 == 1)
             {
                 ScoreControl.scorevalue += 100;
                 bonustracker = 0;
-                bonus2 = 0;
+                bonus1 = 0;
+				bonus2 = 0;
+				bonus3 = 0;
             }
         }
         if (collision.transform.name == "Bonus3")
         {
             bonustracker += 1;
             //int bonus3 = 0;
-            bonus3++;
+            if (bonus3==0)
+			{
+				bonus3=1;
+			}
+			else {
+				bonus3=0;
+			}
             Debug.Log("bonus3: " + bonus3);
             if (bonustracker >= 3 && bonus3 == 1)
             {
                 ScoreControl.scorevalue += 100;
                 bonustracker = 0;
-                bonus3 = 0;
+                bonus1 = 0;
+				bonus2 = 0;
+				bonus3 = 0;
             }
         }
     }
