@@ -4,40 +4,45 @@ using UnityEngine;
 
 public class TableTilt : MonoBehaviour
 {
-    public Rigidbody2D rb2d;
+    // References to gameObject fields
+    public Rigidbody2D rigidbody2d;
+
+    // References to constant fields
     public float minInterval = 0.5f;
     private float yRange = 1f;
     private float forceMin = 100f;
     private float forceMax = 1000f;
     private float timeLastTilt;
+    private KeyCode LeftTiltInput = KeyCode.LeftShift;
+    private KeyCode RightTiltInput = KeyCode.RightShift;
+
     // Start is called before the first frame update
     void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
+        rigidbody2d = GetComponent<Rigidbody2D>();
         timeLastTilt = Time.realtimeSinceStartup;
     }
 
+    // Checks if enough time has passed since the last tilt
     bool userCanTilt()
     {
         return Time.realtimeSinceStartup - timeLastTilt >= minInterval;
     }
 
-    // Update is called once per frame
+    // FixedUpdate is called once per physics step
     void FixedUpdate()
     {
         if (userCanTilt())
         {
-            if (Input.GetKeyDown(KeyCode.RightShift))
+            if (Input.GetKeyDown(LeftTiltInput))
             {
-                rb2d.AddForce(new Vector2(-1, Random.Range(-yRange, yRange)) * Random.Range(forceMin, forceMax));
+                rigidbody2d.AddForce(new Vector2(-1, Random.Range(-yRange, yRange)) * Random.Range(forceMin, forceMax));
                 timeLastTilt = Time.realtimeSinceStartup;
-                Debug.Log("Right tilt.");
             }
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(RightTiltInput))
             {
-                rb2d.AddForce(new Vector2(1, Random.Range(-yRange, yRange)) * Random.Range(forceMin, forceMax));
+                rigidbody2d.AddForce(new Vector2(1, Random.Range(-yRange, yRange)) * Random.Range(forceMin, forceMax));
                 timeLastTilt = Time.realtimeSinceStartup;
-                Debug.Log("Right tilt.");
             }
         }
     }

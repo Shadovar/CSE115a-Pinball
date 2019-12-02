@@ -1374,7 +1374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f40e0f24fd366e34db5482d78a52fa6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb2d: {fileID: 0}
+  rigidbody2d: {fileID: 0}
   minInterval: 1.5
 --- !u!1 &857924470
 GameObject:
@@ -1926,7 +1926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1113357239
 MonoBehaviour:
   m_ObjectHideFlags: 0
