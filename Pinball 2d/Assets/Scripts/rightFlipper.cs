@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class rightFlipper : MonoBehaviour
 {
-    float rightMaxRot = 145; //default value: 145
-    float rightRestingRot = 210; //default value: 210
-    float upSpeed = 18; //default 18
-    float downSpeed = -8; //default -8
+    // Reference to gameObject fields
     public AudioClip rightFlipperSound;
-    public AudioSource rightFlipperSource;
-    public KeyCode rightFlipperKey = KeyCode.Period;
+    public AudioSource rightFlipperSource;   
     public GameObject childFlipper;
-    public bool paused = false;
 
-    //Sets inputs for the right flipper
+    // Reference to constant fields
+    float rightMaxRot = 145;
+    float rightRestingRot = 210;
+    float upSpeed = 18;
+    float downSpeed = -8;
+    public KeyCode rightFlipperKey = KeyCode.Period;
+    public bool paused = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,13 +23,10 @@ public class rightFlipper : MonoBehaviour
         rightFlipperSource.clip = rightFlipperSound;
     }
 
-    public void rightChangePauseState()
-    {
-        paused = !paused;
-    }
+
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
         if (!paused)
         {
@@ -36,6 +34,14 @@ public class rightFlipper : MonoBehaviour
             {
                 rightFlipperSource.Play();
             }
+        }
+    }
+
+    // FixedUpdate is called once per physics step
+    void FixedUpdate()
+    {
+        if (!paused)
+        {
             if (Input.GetKey(rightFlipperKey))
             {
                 //if it hasn't reached its maximum
@@ -43,6 +49,7 @@ public class rightFlipper : MonoBehaviour
                 if (transform.eulerAngles.z >= rightMaxRot)
                 {
                     transform.Rotate(new Vector3(0, 0, -upSpeed));
+
                     //Tell flipper to be able to push ball up
                     childFlipper.gameObject.SendMessage("ChangeColliderState", true);
                 }
@@ -60,23 +67,23 @@ public class rightFlipper : MonoBehaviour
                     transform.Rotate(new Vector3(0, 0, -downSpeed));
 
                 }
+
                 //Tell flipper to no longer be able to push ball up
                 childFlipper.gameObject.SendMessage("ChangeColliderState", false);
             }
         }
     }
 
+    // When the pause state changes, update the functionality of the Update functions
+    public void rightChangePauseState()
+    {
+        paused = !paused;
+    }
+
+    // When it detects a collision, tell it that it collided with a flipper
     private void OnCollisionEnter2D(Collision2D other)
     {
-        //if (other.gameObject.CompareTag("Pinball"))
-        //{
-            Debug.Log("rightFlipper: Of type Pinball");
-            //if ((transform.eulerAngles.z >= rightMaxRot || transform.eulerAngles.z <= rightRestingRot))
-            //{
-                Debug.Log("rightFlipper: Name of this object is " + gameObject.transform.name);
                 other.gameObject.SendMessage("FlipperCollision");
-                Debug.Log("rightFlipper: Sent Flipper Collision");
-            //}
-        //}
+
     }
 }

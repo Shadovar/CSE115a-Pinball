@@ -35,7 +35,7 @@ public class leftFlipper : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    // FixedUpdate is called once per physics step
     void FixedUpdate()
     {
         if (!paused)
