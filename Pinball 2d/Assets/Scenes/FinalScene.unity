@@ -3566,7 +3566,7 @@ Transform:
   m_GameObject: {fileID: 1877493610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.307, y: -12.7, z: 1}
-  m_LocalScale: {x: 30.74324, y: 5.9604483, z: 1}
+  m_LocalScale: {x: 100, y: 5.9604483, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -3700,7 +3700,7 @@ PrefabInstance:
         type: 3}
       propertyPath: springSound
       value: 
-      objectReference: {fileID: 8300000, guid: 8bf8f28bc5d51f14b827da987830bcfc, type: 3}
+      objectReference: {fileID: 8300000, guid: 7f710d38e9712dd4a896d4c03bc61d9c, type: 3}
     - target: {fileID: 4023882754919479923, guid: 02da28df8024a544ea98301f4be79751,
         type: 3}
       propertyPath: gate
@@ -3990,7 +3990,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8bf8f28bc5d51f14b827da987830bcfc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7f710d38e9712dd4a896d4c03bc61d9c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
