@@ -14,7 +14,7 @@ public class rightFlipper : MonoBehaviour
     float rightRestingRot = 210;
     float upSpeed = 18;
     float downSpeed = -8;
-    public KeyCode rightFlipperKey = KeyCode.Period;
+    public KeyCode rightFlipperKey = KeyCode.M;
     public bool paused = false;
 
     // Start is called before the first frame update

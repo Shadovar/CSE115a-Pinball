@@ -15,7 +15,7 @@ public class leftFlipper : MonoBehaviour
     float upSpeed = 18;
     float downSpeed = -8;
     public bool paused = false;
-    public KeyCode LeftFlipperKey = KeyCode.Z;
+    public KeyCode LeftFlipperKey = KeyCode.C;
  
     // Start is called before the first frame update
     void Start()

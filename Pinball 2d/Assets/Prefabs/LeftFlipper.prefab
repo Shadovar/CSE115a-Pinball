@@ -661,7 +661,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftFlipperSound: {fileID: 8300000, guid: ecbcabee9fad3334195822edaa61113d, type: 3}
   leftFlipperSource: {fileID: 4966516560070217784}
-  LeftFlipperKey: 122
+  childFlipper: {fileID: 0}
+  paused: 0
+  LeftFlipperKey: 99
 --- !u!82 &4966516560070217784
 AudioSource:
   m_ObjectHideFlags: 0
