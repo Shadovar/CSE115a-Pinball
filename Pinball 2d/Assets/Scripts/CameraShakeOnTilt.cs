@@ -6,7 +6,7 @@ public class CameraShakeOnTilt : MonoBehaviour
 {
     //References to primitive fields
     private float shakeDuration = 0f;
-    private float shakeMagnitudeMax = 1.5f;
+    private float shakeMagnitudeMax = .75f;
     private float shakeMagnitudeCurrent = 0f;
     private Vector3 initialPosition;
 

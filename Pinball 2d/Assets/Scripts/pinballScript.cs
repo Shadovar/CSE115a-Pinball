@@ -4,33 +4,22 @@ using UnityEngine;
 
 public class pinballScript : MonoBehaviour
 {
-
+    //References to gameObject fields
     public Rigidbody2D rigidBall;
     public LauncherSpring launcher;
-    public Vector3 startPos;
     public AudioClip hitWallSound;
     public AudioSource hitWallSource;
+	public GameObject[] indicatorLights;
+
+    //References to primitive fields
+    public Vector3 startPos;
     private float forceFromFlipper = 50f;
 	public bool[] bonusStates;
-	public GameObject[] indicatorLights;
-    // Start is called before the first frame update
-	void resetBonusStates(){
-		for (int i=0; i<3; i++){
-			bonusStates[i]=false;
-            indicatorLights[i].GetComponent<SpriteRenderer>().color = Color.red;
-		}
-	}
-	
-	bool checkBonus(){
-		for (int i=0; i<3; i++){
-			if (bonusStates[i]==false){
-				return false;
-			}
-		}
-		return true;
-	}
+    private float soundRequisiteSpeed = 2f;
+    private float bumperOutwardForce = 100f;
+
 		
-	
+    // Start is called before the first frame update
     void Start()
     {
         hitWallSource.clip = hitWallSound;
@@ -38,48 +27,30 @@ public class pinballScript : MonoBehaviour
 		resetBonusStates();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        
-    }
-
+    // OnTriggerEnter2D is called when object enters an isTrigger collider
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log(collision.transform.name);
-        if (rigidBall.velocity.magnitude > 2)
+        // If the pinball is going fast at time of collision, make a noise
+        if (rigidBall.velocity.magnitude > soundRequisiteSpeed)
         {
             hitWallSource.Play();
-            Debug.Log("played");
         }
-        else
-        {
-            Debug.Log(rigidBall.velocity.magnitude);
-        }
-        if (collision.gameObject.CompareTag("Flipper"))
-        {
-            Debug.Log("PinballScript: Hit Flipper");
-            //rigidBall.AddForce(Vector2.up * forceFromFlipper, ForceMode2D.Impulse);
-
-        }
-        // hit bumpers
-        /*if (collision.transform.name == "Triangle")
-        {
-            ScoreControl.scorevalue += 10;
-        }*/
         
-        // lose the game
+        // If the pinball collides with something that ends the game
         if (collision.transform.name == "YouLose")
         {
             ScoreControl.scorevalue = 0;
             resetBonusStates();
             launcher.restartGame();
         }
-        // bonus points
+
+        // If the pinball collides with one of the bonus point scoring bumpers
         if (collision.transform.name.StartsWith("Bonus"))
         {
+            //Identify the correct one, accounting for offByOne errors
 			int whichBonus = collision.transform.name[5] - '1';
 			
+            //If the one it hit wasn't lit up, light it up
 			if (bonusStates[whichBonus]==false){
 				bonusStates[whichBonus]=true;
                 indicatorLights[whichBonus].GetComponent<SpriteRenderer>().color = Color.green;
@@ -88,32 +59,48 @@ public class pinballScript : MonoBehaviour
 					resetBonusStates();
 				}
 			}
+            //if it was already lit up, turn it off
 			else {
 				bonusStates[whichBonus]=false;
 				indicatorLights[whichBonus].GetComponent<SpriteRenderer>().color = Color.red;
 			}
-            Debug.Log(collision.transform.name + bonusStates[whichBonus]);
         }
     }
 
+    // OnCollisionEnter2D is called when the object collides with any collider
     private void OnCollisionEnter2D (Collision2D collision)
     {
-        //Debug.Log("Pinball Script: OnCollisionEnter2D: " + collision.gameObject.name + ", " + collision.gameObject.tag);
-
+        //If the pinball collided with a bumper
         if (collision.gameObject.tag.Equals("Bumper"))
         {
-            //Debug.Log("pinballScript: Hit bumper");
+            //Uptick score, push ball away
             ScoreControl.scorevalue += 10;
             Vector2 colliderLoc = collision.transform.position;
-            float outwardForce = 100f;
-            rigidBall.AddForce(outwardForce * (new Vector2(gameObject.transform.position.x, gameObject.transform.position.y) - colliderLoc));
-            //rigidBall.AddForce(-rigidBall.velocity * 50);
+            rigidBall.AddForce(bumperOutwardForce * (new Vector2(gameObject.transform.position.x, gameObject.transform.position.y) - colliderLoc));
         }
     }
 
+    // FlipperCollision will be called if one of the flippers registers a collision with the pinball, pushing it up
     public void FlipperCollision()
     {
-        Debug.Log("pinballScript: recived message for Flipper Collision");
         rigidBall.AddForce(Vector2.up * forceFromFlipper, ForceMode2D.Impulse);
     }
+
+    // If all three bonus point bumpers have been hit, reset them to their default state
+    void resetBonusStates(){
+		for (int i=0; i<3; i++){
+			bonusStates[i]=false;
+            indicatorLights[i].GetComponent<SpriteRenderer>().color = Color.red;
+		}
+	}
+	
+    // Check if all three bonus point bumpers have been hit
+	bool checkBonus(){
+		for (int i=0; i<3; i++){
+			if (bonusStates[i]==false){
+				return false;
+			}
+		}
+		return true;
+	}
 }

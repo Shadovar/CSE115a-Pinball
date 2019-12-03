@@ -7,15 +7,14 @@ using UnityEngine.UI;
 
 public class ScoreControl : MonoBehaviour
 {
+    //References to primitive fields
     public static int scoreValue = 0;
     public static int currentHighScore = 0;
     public static List<Tuple<string, int>> highScores;
     public const string defaultScorePath = "score.txt";
     Text score;
 
-    /// <summary>
-    /// Updates the hogh score whenever scorevalue is updated.
-    /// </summary>
+    // scorevalue updates the high score upon the score being updated
     public static int scorevalue
     {
         get { return scoreValue; }
