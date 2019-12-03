@@ -74,10 +74,16 @@ public class rightFlipper : MonoBehaviour
         }
     }
 
-    // When the pause state changes, update the functionality of the Update functions
-    public void rightChangePauseState()
+    //Disable flipper when paused
+    public void Pause()
     {
-        paused = !paused;
+        paused = true;
+    }
+
+    //Enable flipper when unpaused
+    public void Resume()
+    {
+        paused = false;
     }
 
     // When it detects a collision, tell it that it collided with a flipper

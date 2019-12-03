@@ -16,6 +16,7 @@ public class TableTilt : MonoBehaviour
     private float timeLastTilt;
     private KeyCode LeftTiltInput = KeyCode.LeftShift;
     private KeyCode RightTiltInput = KeyCode.RightShift;
+    private bool paused = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,16 +25,10 @@ public class TableTilt : MonoBehaviour
         timeLastTilt = Time.realtimeSinceStartup;
     }
 
-    // Checks if enough time has passed since the last tilt
-    bool userCanTilt()
-    {
-        return Time.realtimeSinceStartup - timeLastTilt >= minInterval;
-    }
-
     // FixedUpdate is called once per physics step
     void FixedUpdate()
     {
-        if (userCanTilt())
+        if (UserCanTilt())
         {
             if (Input.GetKeyDown(LeftTiltInput))
             {
@@ -48,5 +43,23 @@ public class TableTilt : MonoBehaviour
                 camera.SendMessage("ShakeForDuration", .5f);
             }
         }
+    }
+    
+    // Checks if enough time has passed since the last tilt and that game isn't paused
+    bool UserCanTilt()
+    {
+        return (Time.realtimeSinceStartup - timeLastTilt >= minInterval) && !paused;
+    }
+
+    // Method to pause functionality
+    public void Pause()
+    {
+        paused = true;
+    }
+
+    // Method to unpause functionality
+    public void Resume()
+    {
+        paused = false;
     }
 }

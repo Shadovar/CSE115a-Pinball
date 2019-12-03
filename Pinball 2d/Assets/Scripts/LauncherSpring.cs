@@ -48,11 +48,11 @@ public class LauncherSpring : MonoBehaviour
         if (userIsLaunching)
         {
             // The user is holding (or just released) the launch key
-            newBall.rigidBall.position = new Vector3(currentSpringPos.x, currentSpringPos.y - 1.5f);
-            newBall.rigidBall.velocity = new Vector2(0, 0);
-            newBall.rigidBall.inertia = 0.0f;
-            newBall.rigidBall.angularVelocity = 0;
-            newBall.rigidBall.SetRotation(0);
+            newBall.rigidbody2D.position = new Vector3(currentSpringPos.x, currentSpringPos.y - 1.5f);
+            newBall.rigidbody2D.velocity = new Vector2(0, 0);
+            newBall.rigidbody2D.inertia = 0.0f;
+            newBall.rigidbody2D.angularVelocity = 0;
+            newBall.rigidbody2D.SetRotation(0);
             barrier.rigidbody2D.simulated = true;
         }
 
@@ -73,8 +73,8 @@ public class LauncherSpring : MonoBehaviour
         {
             // The user just released the launch key
             float applyForce = 10 + (numFramesHeld * 100) / (float)MaxNumFramesHold;
-            newBall.rigidBall.position = new Vector3(launchPos.x, launchPos.y);
-            newBall.rigidBall.AddForce(new Vector2(0.0f, applyForce), ForceMode2D.Impulse);
+            newBall.rigidbody2D.position = new Vector3(launchPos.x, launchPos.y);
+            newBall.rigidbody2D.AddForce(new Vector2(0.0f, applyForce), ForceMode2D.Impulse);
             Debug.Log("Launch Intensity: " + applyForce);
             numFramesHeld = 0;
             barrier.rigidbody2D.simulated = true;
@@ -87,14 +87,15 @@ public class LauncherSpring : MonoBehaviour
     }
 
     // Resets the functionality of the launcher
-    public void restartGame()
+    public void RestartGame()
     {
-        newBall.rigidBall.position = new Vector3(launchPos.x, launchPos.y + 0.0f);
+        newBall.rigidbody2D.position = new Vector3(launchPos.x, launchPos.y + 0.0f);
         userCanLaunch = true;
-        newBall.rigidBall.velocity = new Vector2(0, 0);
-        newBall.rigidBall.inertia = 0.0f;
-        newBall.rigidBall.angularVelocity = 0;
-        newBall.rigidBall.SetRotation(0);
+        newBall.rigidbody2D.velocity = new Vector2(0, 0);
+        newBall.rigidbody2D.inertia = 0.0f;
+        newBall.rigidbody2D.angularVelocity = 0;
+        newBall.rigidbody2D.SetRotation(0);
+        //newBall.rigidbody2D.gravityScale = 0;
         barrier.rigidbody2D.simulated = true;
         gate.rigidbody2D.simulated = false;
     }

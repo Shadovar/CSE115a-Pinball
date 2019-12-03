@@ -71,9 +71,15 @@ public class leftFlipper : MonoBehaviour
     }
 
     //Disable flipper when paused
-    public void leftChangePauseState()
+    public void Pause()
     {
-        paused = !paused;
+        paused = true;
+    }
+
+    //Enable flipper when unpaused
+    public void Resume()
+    {
+        paused = false;
     }
 
     //Check if the flipper is at less than maximum rotation

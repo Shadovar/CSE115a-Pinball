@@ -7,9 +7,9 @@ public class pauseScript : MonoBehaviour
 
     // References to gameObject fields
     public GameObject pauseMenu;
-    public Rigidbody2D ball;   
-    public leftFlipper leftFlipperScript;
-    public rightFlipper RightFlipperScript;
+    public GameObject pinball; 
+    public GameObject leftFlipper;
+    public GameObject rightFlipper;
     public LauncherSpring launcher;
 
     // References to primitive fields
@@ -42,26 +42,31 @@ public class pauseScript : MonoBehaviour
         }
     }
 
-    // Called when pause is ended, allowing resumption of normal Update procedure
-    public void Resume()
+    // Unpause is the common functionalities between Resume and Restart
+    private void Unpause()
     {
         pauseMenu.SetActive(false);
         paused = false;
-        ball.velocity = holdBallVelocity;
-        ball.gravityScale = holdBallGravity;
-        leftFlipperScript.leftChangePauseState();
-        RightFlipperScript.rightChangePauseState();
+        leftFlipper.gameObject.SendMessage("Resume");
+        rightFlipper.gameObject.SendMessage("Resume");
+    }
+
+    // Called when pause is ended, allowing resumption of normal Update procedure
+    public void Resume()
+    {
+        pinball.gameObject.SendMessage("Resume");
+        pauseMenu.SetActive(false);
+        paused = false;
+        leftFlipper.gameObject.SendMessage("Resume");
+        rightFlipper.gameObject.SendMessage("Resume");
+
     }
 
     // Called when a restart is requested, restart game
     public void Restart()
     {
-        pauseMenu.SetActive(false);
-        paused = false;
-        ball.gravityScale = holdBallGravity;
-        leftFlipperScript.leftChangePauseState();
-        RightFlipperScript.rightChangePauseState();
-        launcher.restartGame();
+        Resume();
+        launcher.RestartGame();
     }
 
     // Called when a pause is requested, forcing normal update functionality to no longer work
@@ -69,16 +74,13 @@ public class pauseScript : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         paused = true;
-        holdBallVelocity = ball.velocity;
-        holdBallGravity = ball.gravityScale;
-        ball.velocity = new Vector3(0,0,0);
-        ball.gravityScale = 0f;
-        leftFlipperScript.leftChangePauseState();
-        RightFlipperScript.rightChangePauseState();
+        pinball.gameObject.SendMessage("Pause");
+        leftFlipper.gameObject.SendMessage("Pause");
+        rightFlipper.gameObject.SendMessage("Pause");
     }
 
     // Called when exiting the game is desired, exiting the game
-    public void exitGame()
+    public void ExitGame()
     {
         ScoreControl.CommitScore("User");
         ScoreControl.Save();

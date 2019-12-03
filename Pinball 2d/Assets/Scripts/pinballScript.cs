@@ -5,7 +5,7 @@ using UnityEngine;
 public class pinballScript : MonoBehaviour
 {
     //References to gameObject fields
-    public Rigidbody2D rigidBall;
+    public Rigidbody2D rigidbody2D;
     public LauncherSpring launcher;
     public AudioClip hitWallSound;
     public AudioSource hitWallSource;
@@ -17,6 +17,8 @@ public class pinballScript : MonoBehaviour
 	public bool[] bonusStates;
     private float soundRequisiteSpeed = 2f;
     private float bumperOutwardForce = 100f;
+    private Vector3 pausedVelocity;
+    private float pausedGravity = 0f;
 
 		
     // Start is called before the first frame update
@@ -24,14 +26,16 @@ public class pinballScript : MonoBehaviour
     {
         hitWallSource.clip = hitWallSound;
 		bonusStates = new bool[3];		
-		resetBonusStates();
+		ResetBonusStates();
+        startPos = gameObject.transform.position;
+        pausedVelocity = new Vector3(0, 0, 0);
     }
 
     // OnTriggerEnter2D is called when object enters an isTrigger collider
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // If the pinball is going fast at time of collision, make a noise
-        if (rigidBall.velocity.magnitude > soundRequisiteSpeed)
+        if (rigidbody2D.velocity.magnitude > soundRequisiteSpeed)
         {
             hitWallSource.Play();
         }
@@ -40,8 +44,8 @@ public class pinballScript : MonoBehaviour
         if (collision.transform.name == "YouLose")
         {
             ScoreControl.scorevalue = 0;
-            resetBonusStates();
-            launcher.restartGame();
+            ResetBonusStates();
+            launcher.RestartGame();
         }
 
         // If the pinball collides with one of the bonus point scoring bumpers
@@ -54,9 +58,9 @@ public class pinballScript : MonoBehaviour
 			if (bonusStates[whichBonus]==false){
 				bonusStates[whichBonus]=true;
                 indicatorLights[whichBonus].GetComponent<SpriteRenderer>().color = Color.green;
-                if (checkBonus()){
+                if (CheckBonus()){
 					ScoreControl.scorevalue += 100;
-					resetBonusStates();
+					ResetBonusStates();
 				}
 			}
             //if it was already lit up, turn it off
@@ -76,18 +80,35 @@ public class pinballScript : MonoBehaviour
             //Uptick score, push ball away
             ScoreControl.scorevalue += 10;
             Vector2 colliderLoc = collision.transform.position;
-            rigidBall.AddForce(bumperOutwardForce * (new Vector2(gameObject.transform.position.x, gameObject.transform.position.y) - colliderLoc));
+            rigidbody2D.AddForce(bumperOutwardForce * (new Vector2(gameObject.transform.position.x, gameObject.transform.position.y) - colliderLoc));
         }
+    }
+
+    // Method to pause functionality
+    public void Pause()
+    {
+        //Save current movement values, then stop movement
+        pausedVelocity = rigidbody2D.velocity;
+        pausedGravity = rigidbody2D.gravityScale;
+        rigidbody2D.velocity = new Vector3(0, 0, 0);
+        rigidbody2D.gravityScale = 0f;
+    }
+
+    // Method to unpause functionality
+    public void Resume()
+    {
+        rigidbody2D.velocity = pausedVelocity;
+        rigidbody2D.gravityScale = pausedGravity;
     }
 
     // FlipperCollision will be called if one of the flippers registers a collision with the pinball, pushing it up
     public void FlipperCollision()
     {
-        rigidBall.AddForce(Vector2.up * forceFromFlipper, ForceMode2D.Impulse);
+        rigidbody2D.AddForce(Vector2.up * forceFromFlipper, ForceMode2D.Impulse);
     }
 
     // If all three bonus point bumpers have been hit, reset them to their default state
-    void resetBonusStates(){
+    void ResetBonusStates(){
 		for (int i=0; i<3; i++){
 			bonusStates[i]=false;
             indicatorLights[i].GetComponent<SpriteRenderer>().color = Color.red;
@@ -95,7 +116,7 @@ public class pinballScript : MonoBehaviour
 	}
 	
     // Check if all three bonus point bumpers have been hit
-	bool checkBonus(){
+	bool CheckBonus(){
 		for (int i=0; i<3; i++){
 			if (bonusStates[i]==false){
 				return false;

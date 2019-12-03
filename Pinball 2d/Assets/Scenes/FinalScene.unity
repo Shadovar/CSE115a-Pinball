@@ -1020,6 +1020,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 186350825}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &733486939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3895979512148140935, guid: 0cc98514608ef8f42a28bcf562c625a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 9199403727595272578}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &790824786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,16 +1225,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967d574879b9c2a47a9037be74e7d3b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidBall: {fileID: 793400173}
+  rigidbody2D: {fileID: 793400173}
   launcher: {fileID: 1644833631}
-  startPos: {x: 1.03, y: 2.98, z: 0}
   hitWallSound: {fileID: 8300000, guid: dcd0f65e2b26bd54aa9ccc83f73b4f42, type: 3}
   hitWallSource: {fileID: 793400179}
-  bonusStates: 
   indicatorLights:
   - {fileID: 1389456839}
   - {fileID: 2056588511}
   - {fileID: 2058640482}
+  startPos: {x: 1.03, y: 2.98, z: 0}
+  bonusStates: 
 --- !u!58 &793400177
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2029,9 +2035,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1719866606}
-  ball: {fileID: 793400173}
-  leftFlipperScript: {fileID: 1383560831}
-  RightFlipperScript: {fileID: 1501028163}
+  pinball: {fileID: 793400172}
+  leftFlipper: {fileID: 1494818902}
+  rightFlipper: {fileID: 733486939}
   launcher: {fileID: 1644833631}
 --- !u!114 &1113357240
 MonoBehaviour:
@@ -2736,18 +2742,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251853010}
   m_CullTransparentMesh: 0
---- !u!114 &1383560831 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8548830867455329445, guid: e14f56351d0542245809af82ec6b911f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1190420469637174915}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 196897ca7a91e1e40adfc44808d6c9ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1389456839
 GameObject:
   m_ObjectHideFlags: 0
@@ -2828,18 +2822,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1501028163 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3895979512148140934, guid: 0cc98514608ef8f42a28bcf562c625a3,
+--- !u!1 &1494818902 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2374425157813599365, guid: e14f56351d0542245809af82ec6b911f,
     type: 3}
-  m_PrefabInstance: {fileID: 9199403727595272578}
+  m_PrefabInstance: {fileID: 1190420469637174915}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92f9745963a46ff4b90ddf4b21095b80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1502694622
 GameObject:
   m_ObjectHideFlags: 0
@@ -4697,7 +4685,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1113357239}
-        m_MethodName: exitGame
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
